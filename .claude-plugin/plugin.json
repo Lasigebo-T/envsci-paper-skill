@@ -1,0 +1,28 @@
+{
+  "name": "enviro-paper",
+  "description": "End-to-end authoring skill for environmental-science field-sampling and monitoring papers — from raw sampling data to a submission-ready manuscript with reviewer-response letters. Covers QA/QC and non-detect handling, environmental statistics, pollution and risk indices (Igeo, EF, CF/PLI, Hakanson Er/RI, Nemerow, WQI, EPA HQ/HI/CR), publication figures, section-aware IMRaD writing and polishing, citation integrity (no fabricated DOIs), peer-review simulation, reviewer-response letters, and target-journal fit. Fuses the rigor of academic-research-skills (integrity gates, anti-fabrication) with the concrete outputs of nature-skills, tailored to environmental science.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lasigebo-T",
+    "url": "https://github.com/Lasigebo-T"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/Lasigebo-T/envsci-paper-skill",
+  "repository": "https://github.com/Lasigebo-T/envsci-paper-skill",
+  "keywords": [
+    "environmental-science",
+    "academic-writing",
+    "sampling",
+    "water-quality",
+    "soil",
+    "sediment",
+    "pore-water",
+    "pollution-index",
+    "risk-assessment",
+    "scientific-figures",
+    "citation-integrity",
+    "claude-code",
+    "codex",
+    "agent-skills"
+  ]
+}

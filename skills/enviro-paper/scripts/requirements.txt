@@ -1,0 +1,21 @@
+# enviro-paper / scripts runtime dependencies
+#
+# Core (required for envsci_style.py — all plotters, styling, export):
+matplotlib>=3.6
+numpy>=1.23
+pandas>=1.5
+#
+# Optional (lazily imported; features degrade gracefully if absent):
+#   scipy        -> p-value significance stars in correlation_heatmap; Shapiro/ANOVA helpers
+#   geopandas    -> real basemap behind spatial_scatter_map (else a clean CRS-labelled panel)
+#   contextily   -> web-tile basemaps for site maps
+#   pykrige      -> kriging interpolation surfaces (IDW also works via scipy)
+# scipy>=1.9
+# geopandas>=0.12
+# contextily>=1.3
+# pykrige>=1.7
+#
+# check_references.py uses the Python standard library only — no install needed.
+#
+# Windows note: if `python` opens the Microsoft Store, use the `py` launcher:
+#   py -m pip install -r scripts/requirements.txt

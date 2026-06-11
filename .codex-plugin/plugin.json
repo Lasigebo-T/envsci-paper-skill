@@ -1,0 +1,42 @@
+{
+  "name": "enviro-paper",
+  "version": "1.0.0",
+  "description": "Environmental-science field-sampling paper authoring skill: QA/QC, statistics, pollution & risk indices, publication figures, IMRaD writing and polishing, citation integrity, peer-review simulation, and reviewer-response letters.",
+  "author": {
+    "name": "Lasigebo-T",
+    "url": "https://github.com/Lasigebo-T"
+  },
+  "homepage": "https://github.com/Lasigebo-T/envsci-paper-skill",
+  "repository": "https://github.com/Lasigebo-T/envsci-paper-skill",
+  "license": "MIT",
+  "keywords": [
+    "environmental-science",
+    "academic",
+    "sampling",
+    "pollution-index",
+    "risk-assessment",
+    "figures",
+    "citation",
+    "publication"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Enviro Paper",
+    "shortDescription": "Environmental-science sampling data to a submission-ready paper",
+    "longDescription": "Use Enviro Paper to take an environmental-science field-sampling dataset (water, soil, sediment, sludge, pore-water/peeper, air/aerosol, ecology) all the way to a submission-ready manuscript: validate data with QA/QC and non-detect handling, run environmental statistics, compute pollution and ecological/health-risk indices (Igeo, EF, CF/PLI, Hakanson Er/RI, Nemerow, WQI, EPA HQ/HI/CR), generate publication-quality figures, draft and polish IMRaD sections, verify citations against fabrication, simulate peer review, write reviewer-response letters, and format for a target environmental journal.",
+    "developerName": "Lasigebo-T",
+    "category": "Research",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Analyze my sampling data with QA/QC and compute pollution indices.",
+      "Make publication-quality figures from these environmental results.",
+      "Polish my Methods section to environmental-journal style."
+    ],
+    "websiteURL": "https://github.com/Lasigebo-T/envsci-paper-skill",
+    "brandColor": "#1F7A4D"
+  }
+}

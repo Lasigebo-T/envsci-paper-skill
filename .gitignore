@@ -1,0 +1,21 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Script demo / generated output
+_demo_figs/
+**/scripts/_demo_figs/
+
+# Build artifacts
+*.zip
+_dist/
