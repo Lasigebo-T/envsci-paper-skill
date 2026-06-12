@@ -21,11 +21,11 @@ Two artifacts that the whole downstream pipeline depends on:
 2. **The Annotated Bibliography + Source Ledger** — a citation registry where **every
    source carries a verified DOI (or an explicit "no-DOI" provenance) before it may be
    cited anywhere**. This is the upstream half of the integrity system; Gate I (Stage
-   7.5 / 7.5′, see `citations-and-integrity.md`) is the downstream audit. They share
+   7.5 / 7.5′, see `envsci-citations` skill) is the downstream audit. They share
    one rule: a citation that is not VERIFIED or explicitly NOT_FOUND does not exist.
 
 Both artifacts are emitted into the session so Stages 2–10 can read them. Nothing in
-this stage writes Methods/Results prose — that is `writing.md`'s job and is fenced off
+this stage writes Methods/Results prose — that is `envsci-writing` skill's job and is fenced off
 by the Knowledge-Isolation Directive.
 
 ---
@@ -73,7 +73,7 @@ confirmation.
 | **Candidate indices / risk endpoints** | Which of Igeo / EF / CF / PLI / Er-RI / Nemerow / WQI and which risk endpoints (HQ/HI/CR), child vs adult. | Stage 3 cannot pre-register formulas. |
 | **Known uncertainties / limits** | Detection-limit issues, low replication, missing background, single season — declared **up front**. | Limits get buried or omitted. |
 | **Policy / management implication** | What a manager/regulator would do with this. Required by JEM, strengthens STOTEN/EP. | Desk-reject risk at applied journals. |
-| **Candidate journal & tier** | Target journal + realistic tier (see `journals.md`). | Format and scope mis-fit late. |
+| **Candidate journal & tier** | Target journal + realistic tier (see `envsci-journals` skill). | Format and scope mis-fit late. |
 | **Claims-to-defend** | The 2–5 specific claims the paper must support with evidence. Each becomes an auditable line at Gate I. | Integrity gate has no claim list to verify. |
 
 > **Handoff:** the Study Contract + the Claims-to-defend list are emitted into the
@@ -129,7 +129,7 @@ concentrations, they vary."* Before locking the gap, confirm the study answers a
 **question**, not just reports **numbers**. If the only contribution is occurrence data
 with no novel angle (new region, new analyte, new method, risk translation, or a tested
 driver), surface this to the user as a **publishability risk** and propose a sharpening
-move — do not silently proceed. (See `journals.md` for which venues desk-reject pure
+move — do not silently proceed. (See `envsci-journals` skill for which venues desk-reject pure
 occurrence surveys.)
 
 ---
@@ -176,7 +176,7 @@ incomplete or stale**.
 Field env-sci leans heavily on **grey literature, standards, and agency data**. These
 are legitimate, citable sources — but each is logged with its own provenance, and
 standard/guideline *values* are verified against the actual document (see Gate I,
-Phase C in `citations-and-integrity.md`).
+Phase C in `envsci-citations` skill).
 
 | Source | Use it for | Citation provenance |
 |---|---|---|
@@ -193,7 +193,7 @@ index must trace to its founding paper, and that paper is logged in the ledger l
 other citation: Igeo → **Müller 1969**; EF / CF / PLI → **Tomlinson et al. 1980**;
 ecological-risk Er/RI + toxic-response factors → **Hakanson 1980**; APCS-MLR →
 **Thurston & Spengler 1985**; pseudoreplication → **Hurlbert 1984**; health-risk
-framework → **US EPA RAGS**. (Stage 3 in `data-analysis.md` uses these; this stage
+framework → **US EPA RAGS**. (Stage 3 in `envsci-data` skill uses these; this stage
 sources and verifies them.)
 
 ### 4.3 Four-layer progressive search (run for the core literature)
@@ -320,7 +320,7 @@ work via WebFetch/MCP — the script does not perform them.
 
 ### 6.3 Conservative evidence grading
 
-Tag each source's support strength so the writer calibrates verbs (`writing.md` §
+Tag each source's support strength so the writer calibrates verbs (`envsci-writing` skill §
 verb-calibration):
 
 | Grade | Meaning | Allowed prose strength |

@@ -12,7 +12,7 @@
 > method before any number leaves this stage. Statistics themselves are run in Python (pandas/scipy/
 > scikit-learn/statsmodels) or R (`vegan`/`NADA2`); this file tells you *which* analysis is correct, not a script.
 
-> **Read-once contract.** When this file is loaded, read it fully before producing any analysis plan, code, or numbers. Do not preload other reference files. If the work clearly spills into figures, hand off to `figures.md`; if it spills into writing-up Results, hand off to `writing.md`.
+> **Read-once contract.** When this file is loaded, read it fully before producing any analysis plan, code, or numbers. Do not preload other reference files. If the work clearly spills into figures, hand off to `envsci-figures` skill; if it spills into writing-up Results, hand off to `envsci-writing` skill.
 
 ---
 
@@ -162,7 +162,7 @@ W2, p2 = stats.shapiro(logx)
 
 **Always report:** test statistic, degrees of freedom, **exact p-value** (not "p<0.05"; not "p=.000" → write `p<0.001`), `n` per group, a spread measure (SD/IQR), and an **effect size** where applicable (Cohen's *d*; η² for ANOVA; *r* = Z/√N for rank tests; ε² for Kruskal–Wallis). State the **a-priori α** (usually 0.05).
 
-**Significance letters:** for multi-group plots, convert post-hoc results to compact-letter-display (groups sharing a letter are not significantly different); these letters go on boxplots (handoff to `figures.md`).
+**Significance letters:** for multi-group plots, convert post-hoc results to compact-letter-display (groups sharing a letter are not significantly different); these letters go on boxplots (handoff to `envsci-figures` skill).
 
 ```python
 from scipy import stats
@@ -183,7 +183,7 @@ posthoc = sp.posthoc_dunn(df, val_col="value", group_col="site", p_adjust="holm"
 | Bivariate, both normal & linear | **Pearson r** | only after confirming normality + linearity (residual/scatter check) |
 | Censored data | rank-based (Spearman on ROS-imputed or via `NADA2`) | substituted-then-Pearson is biased |
 
-**Always:** report ρ/r, n, exact p; **correct for multiple testing** when building a correlation matrix (BH-FDR across the matrix). State which coefficient was used in the caption (handoff to `figures.md` heatmap). **Correlation ≠ causation** — never phrase a Spearman result as a mechanism; use "is associated with / co-varies with / consistent with a common source."
+**Always:** report ρ/r, n, exact p; **correct for multiple testing** when building a correlation matrix (BH-FDR across the matrix). State which coefficient was used in the caption (handoff to `envsci-figures` skill heatmap). **Correlation ≠ causation** — never phrase a Spearman result as a mechanism; use "is associated with / co-varies with / consistent with a common source."
 
 ---
 
@@ -392,7 +392,7 @@ CR = ADD · SF             (LADD over lifetime)   ;   Total CR = Σ CR
 | Pitfall | Guard |
 |---|---|
 | **Pseudoreplication** (Hurlbert 1984) | Match the **statistical unit to the sampling design**. Subsamples/replicate analyses of one field sample are **not** independent replicates of the site. n = number of independent sampling units, not number of measurements. If only one composite per site, you cannot do an inferential between-site test on that site — say so. |
-| **Correlation ≠ causation** | Spearman/Pearson and PCA co-occurrence describe association/common-source, not mechanism. Calibrate verbs (handoff to `writing.md`). |
+| **Correlation ≠ causation** | Spearman/Pearson and PCA co-occurrence describe association/common-source, not mechanism. Calibrate verbs (handoff to `envsci-writing` skill). |
 | **Spatial autocorrelation** | Nearby sites are not independent. Check **Moran's I**; if significant, ordinary tests overstate significance — use spatial models or acknowledge. |
 | **Wrong test on skewed/censored data** | A t-test/Pearson on heavily censored or skewed data is invalid (§4–§7). |
 | **Unjustified background / reference element** | `B_n` and EF reference element must be defended (local baseline > global average); an arbitrary background invalidates every index built on it. |
@@ -427,7 +427,7 @@ Run in this order; each step gates the next.
     background justification, single-season bounding.
 14. Emit: results tables + a stats-methods paragraph (software+versions,
     transforms, non-detect method, α, every index formula+citation) for
-    handoff to figures.md (Stage 4) and writing.md (Stage 5).
+    handoff to envsci-figures skill (Stage 4) and envsci-writing skill (Stage 5).
 ```
 
 **Handoff payload to downstream stages:** the cleaned tidy table, the Data Ledger, the QA/QC table, the chosen non-detect method, the per-test results (with effect sizes and significance letters), the index/risk tables with their `B_n`/reference-element/Tr/RfD-SF provenance, and any `[DATA GAP]` flags. Methods and Results downstream describe **only** what this ledger documents.

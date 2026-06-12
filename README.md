@@ -1,193 +1,131 @@
 <div align="center">
 
-# 🌍 envsci-paper-skill
+# 🌍 envsci-paper-skill — environmental-science paper skill collection
 
-**Turn an environmental-science field-sampling dataset into a submission-ready paper.**
-
-A single, self-contained Agent Skill for **Claude Code** and **Codex** that walks an
-environmental-science *monitoring / sampling* study from raw data → QA/QC → statistics &
-pollution-risk indices → publication figures → IMRaD writing → citation integrity →
-peer-review simulation → reviewer-response letter → target-journal fit.
+**A family of independently-selectable Agent Skills** for environmental-science field-sampling /
+monitoring papers — pick one for a single task, or run the umbrella for the whole
+data → manuscript → reviewer-response pipeline. For **Claude Code** and **Codex**.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-1.1.0-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-2.0.0-blue.svg)](CHANGELOG.md)
+[![Skills](https://img.shields.io/badge/Skills-9-brightgreen.svg)](#the-collection)
 [![Works with](https://img.shields.io/badge/Works_with-Claude_Code_%7C_Codex-1F7A4D.svg)](#installation)
 [![Standard](https://img.shields.io/badge/Standard-Agent_Skills-blueviolet.svg)](https://agentskills.io/)
-[![Scripts](https://img.shields.io/badge/Scripts-tested-brightgreen.svg)](#scripts)
 
 </div>
 
-> **Why this exists.** Generic "write my paper" tools don't know what an environmental-science
-> paper actually needs: non-detect handling, dry-vs-wet-weight units, recovery/blank QA/QC,
-> the right statistical test for skewed concentration data, and the pollution & risk indices
-> (Igeo, EF, PLI, Hakanson, WQI, EPA HQ/HI/CR) reviewers expect — with the *correct* formulas.
-> `enviro-paper` bakes all of that in, then adds an anti-fabrication citation gate and a
-> pre-submission reviewer simulation on top.
+> **v2.0.0 — now a collection.** The former single `enviro-paper` skill is split into **8 standalone
+> function skills + 1 umbrella orchestrator**, so you can invoke exactly the capability you need
+> (e.g. just `envsci-figures`, just `envsci-ideate`) without loading the whole pipeline. It also
+> composes with the separate **[scipilot-figure-skill](https://github.com/Haojae/scipilot-figure-skill)**
+> for general figure methodology.
 
 ---
 
-## What's included
+## The collection
 
-One router-style skill — **`enviro-paper`** — = a lean `SKILL.md` + 7 on-demand references + 2 runnable scripts:
+| Skill | What it does | Say something like… |
+|-------|--------------|---------------------|
+| **`enviro-paper`** (umbrella) | Orchestrates the full 10-stage pipeline with 2 blocking integrity gates; routes each stage to the right function skill. **Use only for end-to-end.** | "把这批采样数据写成论文" · "take my data all the way to a manuscript" |
+| **`envsci-ideate`** | Seed papers + your data → recent **verified** literature → ranked, grounded innovation points + prior-art "scooped" check + honest novelty rating | "找创新点 / 研究空白" · "what's novel here, has it been done" |
+| **`envsci-litsearch`** | Literature discovery + anti-hallucination sourcing; databases/MCP routing; log every source with a verified DOI before use | "查文献 / 文献综述" · "find evidence for this claim" |
+| **`envsci-data`** | QA/QC, non-detects, the right statistical test, multivariate, and pollution/risk indices (Igeo/EF/PLI/Hakanson/WQI/HQ-HI-CR) with formulas + worked examples | "分析采样数据 / 质控 / 污染指数 / 健康风险" |
+| **`envsci-figures`** | Env-sci publication figures (site maps, boxplots, heatmaps, PCA biplots, spatial scatter, stacked bars) + `envsci_style.py`; **composes with scipilot** | "画箱线图 / PCA / 点位图 / 期刊配图" |
+| **`envsci-writing`** | Section-aware IMRaD drafting + Nature-style polishing + Chinese-author → English | "写引言/方法/讨论 / 润色 / 去翻译腔" |
+| **`envsci-citations`** | Citation formatting to journal style + **blocking anti-fabrication integrity gate** + `check_references.py` | "核对参考文献 / 查 DOI / 查有没有编造的文献" |
+| **`envsci-review`** | 3-reviewer pre-submission simulation + point-by-point reviewer-response letters | "模拟审稿 / 逐条回复审稿意见" |
+| **`envsci-journals`** | Target-journal scope/format guide + journal-fit decision | "投哪个期刊 / 按 STOTEN 格式" |
 
-| File | Purpose |
-|------|---------|
-| `SKILL.md` | Lean router: the 10-stage pipeline, the mode-dispatch table, and the quality gates. |
-| `references/ideation-and-novelty.md` | **Research ideation**: from your seed papers + data, search recent high-quality literature, verify it, find the real gap, and propose ranked, grounded innovation points (with a "scooped" prior-art check). |
-| `references/research-and-literature.md` | Literature search (Crossref/OpenAlex/Semantic Scholar/PubMed) + anti-hallucination sourcing. |
-| `references/data-analysis.md` | **The env-sci core**: QA/QC, non-detects, statistics, and every pollution/risk index with formula + reference + worked example. |
-| `references/figures.md` | Publication-figure rules + how to drive `envsci_style.py`. |
-| `references/writing.md` | Section-aware IMRaD drafting + Nature-style polishing + Chinese-author workflow. |
-| `references/citations-and-integrity.md` | Journal citation styles + two **blocking** integrity gates. |
-| `references/review-and-response.md` | 3-reviewer simulation + point-by-point response letters. |
-| `references/journals.md` | Scope/format guide for the major environmental journals. |
-| `scripts/envsci_style.py` | `matplotlib` publication style + env-sci plotters (site map, boxplot, heatmap, PCA biplot, spatial scatter, stacked composition). |
-| `scripts/check_references.py` | Offline, stdlib-only reference-integrity linter (exit 1 on any HIGH issue). |
+➕ **Separate companion (install on its own):**
+**[scipilot-figure-skill](https://github.com/Haojae/scipilot-figure-skill)** — a general scientific-figure
+advisor (data profiling, chart selection, visual-QA closed loop, journal specs, Chinese-font fixes).
+`envsci-figures` composes with it for the general figure methodology and adds the env-sci specifics.
 
 ---
 
 ## Installation
 
-`enviro-paper` is a reusable instruction bundle centred on `SKILL.md`. **Copy the whole
-`skills/enviro-paper/` folder**, not just `SKILL.md` — the workflow depends on `references/`
-and `scripts/`.
+Each skill is one folder centred on `SKILL.md` (+ `references/` and, where relevant, `scripts/`).
+Installing the whole repo gives you **all 9 skills**, each independently selectable.
 
-### 1. Codex
+### 1. Claude Code
 
-**Plugin marketplace (bundle install):**
-
-```bash
-codex plugin marketplace add https://github.com/Lasigebo-T/envsci-paper-skill --ref main
-codex plugin add enviro-paper@envsci-paper-skill
-```
-
-**Manual local-skill install (always works):**
-
-```bash
-git clone https://github.com/Lasigebo-T/envsci-paper-skill.git
-cd envsci-paper-skill
-mkdir -p ~/.codex/skills
-cp -R skills/enviro-paper ~/.codex/skills/
-```
-
-Restart Codex, then ask naturally, e.g. `Analyze my sampling data and compute pollution indices.`
-
-### 2. Claude Code
-
-**Plugin marketplace (bundle install):**
-
+**Plugin marketplace (whole collection):**
 ```bash
 claude plugin marketplace add Lasigebo-T/envsci-paper-skill
 claude plugin install enviro-paper@envsci-paper-skill
 ```
 
-**Manual user-skill install (always works):**
-
+**Manual (all 9, always works):**
 ```bash
 git clone https://github.com/Lasigebo-T/envsci-paper-skill.git
 mkdir -p ~/.claude/skills
-cp -R envsci-paper-skill/skills/enviro-paper ~/.claude/skills/
+cp -R envsci-paper-skill/skills/* ~/.claude/skills/
+# install one skill only? copy just that folder, e.g.:
+cp -R envsci-paper-skill/skills/envsci-figures ~/.claude/skills/
 ```
 
-Start a new Claude Code session; the skill auto-triggers on environmental-science requests
-(or invoke it explicitly with `/enviro-paper`).
-
-> **Windows (PowerShell)** — use `Copy-Item` and the `py` launcher:
-> ```powershell
-> git clone https://github.com/Lasigebo-T/envsci-paper-skill.git
-> New-Item -ItemType Directory -Force "$HOME\.claude\skills" | Out-Null
-> Copy-Item -Recurse -Force ".\envsci-paper-skill\skills\enviro-paper" "$HOME\.claude\skills\"
-> # run scripts with:  py skills\enviro-paper\scripts\envsci_style.py --demo all
-> ```
-
-### 3. Other agents / manual
-
-The portable unit is the `skills/enviro-paper/` directory. Copy it into your prompt
-library, keep `SKILL.md` + `references/` + `scripts/` together, and adapt the frontmatter
-to your agent's native format if needed.
-
----
-
-## Quick start
-
-Just describe what you need — in English or Chinese. The skill detects intent and loads the
-right reference.
-
-| You want… | Try saying |
-|-----------|-----------|
-| Research ideas / novelty | "read these papers + my data and propose innovation points" · 「基于这些文献和数据帮我想创新点 / 研究思路」 |
-| End-to-end paper | "take my sampling data to a manuscript" · 「把这批数据写成论文」 |
-| Data analysis + indices | "analyze my data, QA/QC, pollution indices, health risk" · 「分析采样数据、质控、污染指数、健康风险」 |
-| A figure | "make a PCA biplot / site map / boxplot by site" · 「画 PCA 双标图 / 点位图 / 箱线图」 |
-| Write a section | "write the introduction / methods / discussion" · 「写引言 / 方法 / 讨论」 |
-| Polish English | "polish this paragraph, fix translationese" · 「润色这段、去翻译腔」 |
-| Citation integrity | "check my references for fabricated DOIs" · 「核对参考文献有没有编造」 |
-| Peer review | "simulate reviewers on my manuscript" · 「模拟审稿」 |
-| Response letter | "draft a point-by-point rebuttal" · 「逐条回复审稿意见」 |
-| Journal choice | "which journal fits / format for STOTEN" · 「投哪个期刊 / 按 STOTEN 格式」 |
-
----
-
-## The pipeline & quality gates
-
-The full state machine runs end-to-end only in `full-pipeline` mode; every other mode is a
-single-stage entry point.
-
-```
-SCOPE → DATA/QAQC → STATS/INDICES → FIGURES → WRITE → POLISH → CITATIONS
-   → ⟦I-1 integrity gate⟧ → REVIEW → REVISE → RE-REVIEW → ⟦I-2 integrity gate⟧ → RESPONSE/FINALIZE
+**Windows (PowerShell):**
+```powershell
+git clone https://github.com/Lasigebo-T/envsci-paper-skill.git
+New-Item -ItemType Directory -Force "$HOME\.claude\skills" | Out-Null
+Copy-Item -Recurse -Force ".\envsci-paper-skill\skills\*" "$HOME\.claude\skills\"
 ```
 
-Non-negotiable gates: **D** (data validity) · **S** (stats/formula correctness) · **F** (figure QA) ·
-**I-1 / I-2** (two *blocking* anti-fabrication integrity gates, run before review and again, fresh,
-after all revision). Plus iron rules: no fabricated citations/DOIs, every value traces to the data,
-units + dry/wet basis always stated, declared non-detect handling, colorblind-safe figures, and a
-mandatory comparison to environmental quality standards.
-
----
-
-## Scripts
-
-Both scripts run standalone (tested on Python 3.14, matplotlib 3.10, numpy 2.3, pandas 2.3).
+### 2. Codex
 
 ```bash
-python scripts/envsci_style.py --demo all      # 12 demo figures (smoke-test the API)
-python scripts/check_references.py refs.bib    # structural integrity lint; exit 1 on HIGH issues
+codex plugin marketplace add https://github.com/Lasigebo-T/envsci-paper-skill --ref main
+codex plugin add enviro-paper@envsci-paper-skill
+# or manual:
+git clone https://github.com/Lasigebo-T/envsci-paper-skill.git
+mkdir -p ~/.codex/skills && cp -R envsci-paper-skill/skills/* ~/.codex/skills/
 ```
 
-- `envsci_style.py` requires **matplotlib + numpy + pandas** (scipy / geo backends optional, lazily imported). See `scripts/requirements.txt`.
-- `check_references.py` is **stdlib-only** (no install). It lints *structure*; live existence checks are done by the agent via web fetch + literature MCP tools.
-- **Windows:** if `python` opens the Microsoft Store, use the `py` launcher.
+### 3. The figure companion (recommended)
+```bash
+git clone https://github.com/Haojae/scipilot-figure-skill.git
+cp -R scipilot-figure-skill ~/.claude/skills/      # or ~/.codex/skills/
+```
+
+> **Windows Python note:** if `python` opens the Microsoft Store, use the `py` launcher to run the scripts.
+
+---
+
+## How to use
+
+- **Single task** → just describe it; the right skill auto-triggers, or invoke it explicitly
+  (`/envsci-figures`, `/envsci-ideate`, …). Each has a distinct, non-colliding trigger description.
+- **Whole paper** → ask for the full pipeline; the **`enviro-paper`** umbrella walks the 10 stages and
+  hands each to the right function skill, enforcing the two blocking anti-fabrication integrity gates.
+
+```
+SCOPE(ideate+litsearch) → DATA/STATS(data) → FIGURES(figures+scipilot) → WRITE/POLISH(writing)
+  → CITATIONS → ⟦I-1 gate⟧ → REVIEW → REVISE → ⟦I-2 gate⟧ → RESPONSE/JOURNAL-FIT
+```
+
+---
+
+## Scripts (run standalone; tested on Python 3.14 / matplotlib 3.10 / numpy 2.3 / pandas 2.3)
+
+```bash
+python skills/envsci-figures/scripts/envsci_style.py --demo all       # 12 demo figures
+python skills/envsci-citations/scripts/check_references.py refs.bib   # integrity lint; exit 1 on HIGH
+```
+`envsci_style.py` needs matplotlib+numpy+pandas (see `skills/envsci-figures/scripts/requirements.txt`);
+`check_references.py` is stdlib-only.
 
 ---
 
 ## Design & attribution
 
-`enviro-paper` was built by studying and fusing two excellent open-source skill collections,
-then adding an environmental-science analytical layer neither provides:
-
-- **[academic-research-skills](https://github.com/imbad0202/academic-research-skills)** (MIT) —
-  the *rigor backbone*: multi-stage pipeline, two blocking integrity gates, anti-fabrication
-  citation verification, human-in-the-loop checkpoints, anti-sycophancy peer review.
-- **[nature-skills](https://github.com/Yuan1z0825/nature-skills)** (MIT) — the *concrete-output
-  backbone*: publication-grade figures, section-aware writing, quantified polishing rules,
-  3-referee simulation, reviewer-response letters, Chinese-author dual-output.
-- **Environmental-science layer (new in this repo):** QA/QC + non-detect handling, the correct
-  statistical tests for environmental data, and the full pollution/ecological/health-risk index
-  suite (Igeo · EF · CF/PLI · Hakanson Er/RI · Nemerow · WQI · EPA HQ/HI/CR) with canonical
-  references, threshold tables, and worked examples.
-
-Index formulas and thresholds were cross-checked against their canonical sources (Müller 1969,
-Tomlinson 1980, Hakanson 1980, US-EPA RAGS), and both scripts were executed to confirm they run.
-
----
-
-## Contributing
-
-Issues and PRs welcome — new index/figure types, journal profiles, and language fixes especially.
-Keep `SKILL.md` lean (it routes; deep how-to lives in `references/`), and keep both scripts
-dependency-light and runnable.
+Fuses two open-source skill collections, plus an environmental-science analytical layer, plus the
+scipilot figure methodology:
+- **[academic-research-skills](https://github.com/imbad0202/academic-research-skills)** (MIT) — rigor backbone: integrity gates, anti-fabrication citations, HITL.
+- **[nature-skills](https://github.com/Yuan1z0825/nature-skills)** (MIT) — concrete-output backbone: publication figures, section-aware writing, response letters.
+- **[scipilot-figure-skill](https://github.com/Haojae/scipilot-figure-skill)** — general scientific-figure advisor that `envsci-figures` composes with.
+- **Environmental-science layer (this repo):** QA/QC + non-detects, correct env stats, and the full pollution/ecological/health-risk index suite (Igeo · EF · CF/PLI · Hakanson Er/RI · Nemerow · WQI · EPA HQ/HI/CR) with canonical references and worked examples.
 
 ## License
 
-[MIT](LICENSE) © 2026 Lasigebo-T. The two upstream skill collections it draws from are likewise MIT-licensed.
+[MIT](LICENSE) © 2026 Lasigebo-T. Upstream collections are likewise MIT-licensed; scipilot-figure-skill is a separate project under its own license.

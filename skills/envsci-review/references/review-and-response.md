@@ -194,7 +194,7 @@ Log each decision: `[REBUTTAL: Finding C1 | Score 3/5 | Action: Maintain | Reaso
 
 ### B.3 Commitment verification (re-review against the revised manuscript)
 
-For each item on the **Commitment Ledger** (built in Stage 9 — see writing.md), verify it against the revised manuscript. If a committed change is **not fulfilled** and carries no `unfulfilled_rationale`, surface a `COMMITMENT_GAP`. A revision that promised "we added Al-normalization (Discussion)" but did not is a gap, not a pass.
+For each item on the **Commitment Ledger** (built in Stage 9 — see envsci-writing skill), verify it against the revised manuscript. If a committed change is **not fulfilled** and carries no `unfulfilled_rationale`, surface a `COMMITMENT_GAP`. A revision that promised "we added Al-normalization (Discussion)" but did not is a gap, not a pass.
 
 ---
 
@@ -227,7 +227,7 @@ The deliverable is a **point-by-point response letter** an editor can audit line
 | `AUTHOR_INPUT_NEEDED` | Cannot draft final text without real details from the author |
 | `BLOCKING` | Response cannot be credible until the author acts (missing central evidence, integrity, ethics/permit, data) |
 
-Mapping rules: "we revised it" with no location → `AUTHOR_INPUT_NEEDED`. "We added an analysis" → request the test/method, censoring treatment, n, result summary, and the table/figure location. "We added a citation" → require verified bibliographic detail (and route through citations-and-integrity.md). A reviewer asking for impossible/out-of-scope work → `PARTIAL` or `OUT_OF_SCOPE` **plus** a claim softening or an explicit limitation — never a bare refusal.
+Mapping rules: "we revised it" with no location → `AUTHOR_INPUT_NEEDED`. "We added an analysis" → request the test/method, censoring treatment, n, result summary, and the table/figure location. "We added a citation" → require verified bibliographic detail (and route through envsci-citations skill). A reviewer asking for impossible/out-of-scope work → `PARTIAL` or `OUT_OF_SCOPE` **plus** a claim softening or an explicit limitation — never a bare refusal.
 
 ### C.3 Tone and stance
 
@@ -359,7 +359,7 @@ Classify each dataset into one access route (open repository / restricted with s
 
 - **No cover letters** here — adjacent task; say so if asked.
 - **No invented line numbers** — use section names if line numbers are unavailable.
-- New citations route through citations-and-integrity.md and Gate I before they enter the letter.
+- New citations route through envsci-citations skill and Gate I before they enter the letter.
 - An appeal-like case (the author wants to contest a reject) is routed out of the default workflow and flagged `appeal-like`; it needs explicit author-supplied evidence and is not drafted as a normal cooperative response.
 
 ---
@@ -398,7 +398,7 @@ A consolidated, pass/fail gate the author runs after addressing the review and b
 - [ ] Citation style matches the target journal (Elsevier numbered Vancouver / ACS for ES&T / Springer author-year for ESPR).
 
 ### D.5 Journal fit & submission package
-- [ ] Word count, structured-abstract length, highlights (3–5, ≤85 char), graphical abstract / TOC graphic meet the chosen journal's limits *(see journals.md)*.
+- [ ] Word count, structured-abstract length, highlights (3–5, ≤85 char), graphical abstract / TOC graphic meet the chosen journal's limits *(see envsci-journals skill)*.
 - [ ] All numbers (IF, limits, formats) re-verified against the **current** Guide for Authors.
 - [ ] Data-availability statement present (no bare "available on request"; no invented accession).
 - [ ] Cover letter prepared separately (out of scope here).
@@ -425,4 +425,4 @@ When the user works in Chinese, append a short Chinese structural summary after 
 - ARS sprint-contract pre-commitment + commitment ledger: `academic-pipeline` review protocols.
 - nature 3+1 panel + report structure + axes/weighting: `nature-reviewer/references/{report-structure,review-axes,reviewer-workflow}.md`.
 - nature response-letter structure, tone, action mapping, QA: `nature-response/references/{response-structure,tone-and-stance,action-mapping,qa-checklist}.md`.
-- Env-sci domain facts (indices, standards, QA/QC, IMRaD, pitfalls): the ENV-SCI RESEARCH report §1–§5 (see data-analysis.md, writing.md, journals.md).
+- Env-sci domain facts (indices, standards, QA/QC, IMRaD, pitfalls): the ENV-SCI RESEARCH report §1–§5 (see envsci-data skill, envsci-writing skill, envsci-journals skill).

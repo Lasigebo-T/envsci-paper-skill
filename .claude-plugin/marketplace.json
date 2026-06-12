@@ -1,7 +1,7 @@
 {
   "name": "envsci-paper-skill",
-  "version": "1.1.0",
-  "description": "Environmental-science paper-writing skill for Claude Code and Codex: sampling data to a submission-ready manuscript, with QA/QC, statistics, pollution & risk indices, publication figures, IMRaD writing, citation integrity, peer-review simulation, and reviewer responses.",
+  "version": "2.0.0",
+  "description": "Environmental-science paper-writing SKILL COLLECTION for Claude Code and Codex: 1 umbrella orchestrator (enviro-paper) + 8 independently selectable function skills (envsci-ideate, envsci-litsearch, envsci-data, envsci-figures, envsci-writing, envsci-citations, envsci-review, envsci-journals). Each can be invoked on its own; the umbrella runs the full data->manuscript->response pipeline. Composes with the separate scipilot-figure-skill for general figure methodology.",
   "owner": {
     "name": "Lasigebo-T",
     "url": "https://github.com/Lasigebo-T"
@@ -9,9 +9,9 @@
   "plugins": [
     {
       "name": "enviro-paper",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "source": "./",
-      "description": "End-to-end environmental-science field-sampling paper authoring skill — fuses academic-research-skills rigor (integrity gates, anti-fabrication) with nature-skills concrete outputs (publication figures, section-aware writing, response letters).",
+      "description": "Environmental-science paper-writing SKILL COLLECTION for Claude Code and Codex: 1 umbrella orchestrator (enviro-paper) + 8 independently selectable function skills (envsci-ideate, envsci-litsearch, envsci-data, envsci-figures, envsci-writing, envsci-citations, envsci-review, envsci-journals). Each can be invoked on its own; the umbrella runs the full data->manuscript->response pipeline. Composes with the separate scipilot-figure-skill for general figure methodology.",
       "author": {
         "name": "Lasigebo-T"
       },

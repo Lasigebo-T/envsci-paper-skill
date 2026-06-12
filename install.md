@@ -1,117 +1,82 @@
-# Installing `enviro-paper`
+# Installing the envsci-paper skill collection
 
-`enviro-paper` is **not** a Python or npm package. It is one reusable Agent Skill folder
-centred on `SKILL.md`. The important rule:
+This repo is a **collection of 9 Agent Skills** (1 umbrella `enviro-paper` + 8 `envsci-*` function
+skills). Each is one folder under `skills/`, centred on `SKILL.md` (+ `references/` and, where
+relevant, `scripts/`). Copy whole folders, not just `SKILL.md`.
 
-- copy the **entire** `skills/enviro-paper/` folder, not only `SKILL.md`
-- the workflow depends on `references/` (deep how-to) and `scripts/` (runnable tools)
-- copying only `SKILL.md` will silently break figure generation and the integrity gate
-
-It works in any agent that supports the open [Agent Skills](https://agentskills.io/) standard.
-Below are the two most common hosts.
-
----
-
-## 1. What gets installed
+You can install **all 9** (recommended) or **just the one(s) you need** — each skill is standalone
+and independently selectable.
 
 ```text
 skills/
-└── enviro-paper/
-    ├── SKILL.md            # the router (always read first)
-    ├── references/         # 7 on-demand deep references
-    └── scripts/            # envsci_style.py, check_references.py, requirements.txt
+├── enviro-paper/        # umbrella orchestrator (full pipeline) — SKILL.md only
+├── envsci-ideate/       # ideation / novelty
+├── envsci-litsearch/    # literature discovery + sourcing
+├── envsci-data/         # QA/QC, stats, pollution & risk indices
+├── envsci-figures/      # env-sci publication figures (+ scripts/envsci_style.py)
+├── envsci-writing/      # IMRaD drafting + polishing
+├── envsci-citations/    # citation formatting + integrity gate (+ scripts/check_references.py)
+├── envsci-review/       # peer-review simulation + response letters
+└── envsci-journals/     # target-journal scope/format + fit
 ```
 
----
+## 1. Claude Code
 
-## 2. Codex
-
-### Option A — plugin marketplace (whole bundle)
-
-```bash
-codex plugin marketplace add https://github.com/Lasigebo-T/envsci-paper-skill --ref main
-codex plugin add enviro-paper@envsci-paper-skill
-```
-
-If the skill does not appear, refresh the plugin page or start a new Codex session. (Exact
-marketplace syntax can vary by Codex version; if in doubt use Option B, which always works.)
-
-### Option B — manual local skill
-
-```bash
-git clone https://github.com/Lasigebo-T/envsci-paper-skill.git
-cd envsci-paper-skill
-mkdir -p ~/.codex/skills
-cp -R skills/enviro-paper ~/.codex/skills/
-```
-
-Restart Codex. Then ask naturally, e.g. `Compute Igeo and the Hakanson risk index for these sediments.`
-
----
-
-## 3. Claude Code
-
-### Option A — plugin marketplace (whole bundle)
-
+**Plugin marketplace (whole collection):**
 ```bash
 claude plugin marketplace add Lasigebo-T/envsci-paper-skill
 claude plugin install enviro-paper@envsci-paper-skill
 ```
 
-### Option B — manual user skill
-
+**Manual — all 9:**
 ```bash
 git clone https://github.com/Lasigebo-T/envsci-paper-skill.git
 mkdir -p ~/.claude/skills
-cp -R envsci-paper-skill/skills/enviro-paper ~/.claude/skills/
+cp -R envsci-paper-skill/skills/* ~/.claude/skills/
 ```
 
-Start a new Claude Code session. The skill auto-triggers on environmental-science requests, or
-call it explicitly with `/enviro-paper`.
+**Manual — only one skill (e.g. figures):**
+```bash
+cp -R envsci-paper-skill/skills/envsci-figures ~/.claude/skills/
+```
 
-### Windows (PowerShell)
-
+**Windows (PowerShell):**
 ```powershell
 git clone https://github.com/Lasigebo-T/envsci-paper-skill.git
 New-Item -ItemType Directory -Force "$HOME\.claude\skills" | Out-Null
-Copy-Item -Recurse -Force ".\envsci-paper-skill\skills\enviro-paper" "$HOME\.claude\skills\"
+Copy-Item -Recurse -Force ".\envsci-paper-skill\skills\*" "$HOME\.claude\skills\"
 ```
 
-> **Python on Windows:** if `python` opens the Microsoft Store and does nothing, use the `py`
-> launcher instead — e.g. `py "$HOME\.claude\skills\enviro-paper\scripts\envsci_style.py" --demo all`.
-
----
-
-## 4. Install from a local download (no GitHub needed)
-
-If someone gave you a `envsci-paper-skill-v1.0.0.zip`:
-
-1. Unzip it anywhere.
-2. Copy the inner `skills/enviro-paper/` folder into `~/.claude/skills/` (Claude Code) or
-   `~/.codex/skills/` (Codex).
-3. Restart the agent.
-
-That's the whole install — the skill is plain text + two Python scripts.
-
----
-
-## 5. Verify the install
+## 2. Codex
 
 ```bash
-# from inside the skill folder
-python scripts/check_references.py --selftest      # prints: selftest: OK
-python scripts/envsci_style.py --demo all          # writes 12 demo figures to _demo_figs/
+codex plugin marketplace add https://github.com/Lasigebo-T/envsci-paper-skill --ref main
+codex plugin add enviro-paper@envsci-paper-skill
+# or manual:
+git clone https://github.com/Lasigebo-T/envsci-paper-skill.git
+mkdir -p ~/.codex/skills && cp -R envsci-paper-skill/skills/* ~/.codex/skills/
 ```
 
-(Use `py` instead of `python` on Windows if needed.) Requires `matplotlib numpy pandas`
-for the figure script: `pip install -r scripts/requirements.txt`.
+## 3. Figure companion (recommended)
 
----
+`envsci-figures` composes with the separate **scipilot-figure-skill** (general chart selection,
+visual-QA loop, journal specs, Chinese fonts). Install it on its own:
+```bash
+git clone https://github.com/Haojae/scipilot-figure-skill.git
+cp -R scipilot-figure-skill ~/.claude/skills/      # or ~/.codex/skills/
+```
 
-## 6. Update
+## 4. Verify
 
 ```bash
-cd envsci-paper-skill
-git pull
-cp -R skills/enviro-paper ~/.claude/skills/      # or ~/.codex/skills/
+# from inside the repo
+python skills/envsci-citations/scripts/check_references.py --selftest    # selftest: OK
+python skills/envsci-figures/scripts/envsci_style.py --demo all          # 12 demo figures
 ```
+Use `py` instead of `python` on Windows if `python` opens the Microsoft Store. The figure script
+needs `matplotlib numpy pandas` (`pip install -r skills/envsci-figures/scripts/requirements.txt`).
+
+## 5. Install from a local zip (no GitHub)
+
+Unzip, then copy the inner `skills/<name>/` folder(s) into `~/.claude/skills/` (Claude Code) or
+`~/.codex/skills/` (Codex), and restart the agent.

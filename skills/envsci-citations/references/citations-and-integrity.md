@@ -107,7 +107,7 @@ Every reference gets an explicit **Phase A verdict before any Phase B context ch
 - **C1 Statistical cross-reference:** any number attributed to an external source is traced to that source. Secondary-citing a number that has a traceable primary source → flag.
 - **C2 Internal consistency:** the same value identical across abstract / results / tables / discussion; percentages, ratios, totals recompute; tables agree with body text.
 - **C3 Caption fidelity:** does each figure/table caption's *interpretation* actually follow from the underlying data? (Not "is the plot drawn right" — that is the Figure-QA gate. The question is whether the caption's claim is *warranted by the data*.) An overstated or unsupported caption FAILs.
-- **C4 Claim-vs-provenance alignment** — every value in Methods/Results must trace to the **Data Ledger** (from `data-analysis.md`). Env-sci hot spots that MUST align with provenance:
+- **C4 Claim-vs-provenance alignment** — every value in Methods/Results must trace to the **Data Ledger** (from `envsci-data` skill). Env-sci hot spots that MUST align with provenance:
   - **Index thresholds** (Igeo classes, EF/CF/PLI bands, Hakanson Er/RI ranges) match the canonical source, not a remembered approximation.
   - **Recoveries / LOD / LOQ** fall inside the windows declared in the QA/QC block.
   - **Standards/guideline values** (WHO, US EPA, national GB, SQG TEL/PEL, ERL/ERM) match the *actual* standard document.
@@ -203,7 +203,7 @@ Capture retractions, corrections, and expressions of concern when Crossref/publi
 
 ### 7.3 Journal citation styles (with examples)
 
-Match the **target journal's** style (see `journals.md` for the full table). The dominant env-sci families:
+Match the **target journal's** style (see `envsci-journals` skill for the full table). The dominant env-sci families:
 
 **(a) Elsevier numbered / Vancouver `[n]`** — STOTEN, Water Research, Environmental Pollution, Journal of Hazardous Materials, Marine Pollution Bulletin, Atmospheric Environment, Ecological Indicators, Journal of Environmental Management. In-text `[1]`, `[2,3]`, `[4–6]`; numbered in order of appearance.
 ```

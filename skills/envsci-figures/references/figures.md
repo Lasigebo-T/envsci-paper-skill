@@ -94,7 +94,7 @@ and the values you cite in captions / methods.
 - mm → inches via `/ 25.4` (done inside `fig_size`). Height defaults to a sensible ratio; override with
   `fig_size("double", height_mm=120)`.
 - Height must not exceed the target journal's page/figure-height limit (verify in the Guide for Authors;
-  see `journals.md`).
+  see `envsci-journals` skill).
 
 ### 2.3 Resolution & color
 
@@ -164,7 +164,7 @@ matplotlib using the shared style.
 - **When:** repeated sampling over time; before/after an intervention; seasonal cycles.
 - **Gotchas:** **define error bars in the caption** (SD / SE / 95% CI) **with n**; mark the
   **detection-limit** as a reference line if any points are near/below LOD (and say how non-detects were
-  handled — see `data-analysis.md`); do not connect points across a gap that implies data you do not
+  handled — see `envsci-data` skill); do not connect points across a gap that implies data you do not
   have. One season of data cannot support a "trend" claim — flag over-generalization.
 - **Function:** `time_series(...)`.
 
@@ -228,7 +228,7 @@ matplotlib using the shared style.
 - **Gotchas:** **draw the classification thresholds as horizontal reference lines** (e.g. Igeo class
   boundaries 0/1/2/3/4/5; HQ/HI = 1; CR = 1e-6 and 1e-4) and label them; the index values, background
   Bn, and toxic-response factors must come from the **stats stage with their canonical citations** (see
-  `data-analysis.md` Gate S) — figures never introduce new numbers. Keep the same site order/colors as
+  `envsci-data` skill Gate S) — figures never introduce new numbers. Keep the same site order/colors as
   the other panels.
 - **Function:** grouped/horizontal bar recipe over the shared style (use the bar conventions in §5.6);
   add `ax.axhline(threshold, ls='--', color='#767676')` per boundary.
@@ -496,5 +496,5 @@ Emit, into the session, for each figure: the **Figure Contract**, the **Gate-F v
 list of failing HARD rows as `[FIGURE GAP]`s), the **caption draft** (with units/basis, n, error
 definition, test + correction, CRS for maps), and the **source-data trace**. These feed the writing
 stage (Results/Discussion reference the panels) and the integrity stage (caption fidelity is checked in
-`citations-and-integrity.md` Gate I, phase C). A figure that has not passed Gate F must not be cited as
+`envsci-citations` skill Gate I, phase C). A figure that has not passed Gate F must not be cited as
 final evidence downstream.

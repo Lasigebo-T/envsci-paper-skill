@@ -89,7 +89,7 @@ draft. Every paragraph either advances that claim or supports a step in the chai
 - One site-naming scheme (S1…Sn, or names) used identically in text, tables, figures,
   and captions.
 - One index/formula naming set (Igeo, EF, CF, PLI, Er, RI, HQ, HI, CR) matching the
-  formulas verified in `data-analysis.md`.
+  formulas verified in `envsci-data` skill.
 
 **Verb calibration to evidence strength** (do not over- or under-claim):
 
@@ -153,8 +153,8 @@ One figure that conveys the central finding at a glance; it is not a methods flo
   tied to sites), not the full workflow.
 - Self-contained: readable without the caption; labels legible at thumbnail size.
 - Obey the journal's size/resolution (ES&T TOC graphic 3.25 × 1.75 in, ≥ 300 dpi;
-  pair with a 50–60-word synopsis where required — see `journals.md`).
-- Colorblind-safe palette, units on any axis (see `figures.md`).
+  pair with a 50–60-word synopsis where required — see `envsci-journals` skill).
+- Colorblind-safe palette, units on any axis (see `envsci-figures` skill).
 
 **Common mistakes:** cramming the entire pipeline; tiny text; rainbow/jet colormaps;
 a finding the paper does not actually support.
@@ -179,7 +179,7 @@ Treat the abstract as a mini-paper that supports editorial triage. Compose it
 
 For STOTEN-style **structured abstracts**, use explicit labels (Background / Objectives /
 Methods / Results / Conclusions) and keep within the journal cap (STOTEN ≤ 300 words —
-see `journals.md`).
+see `envsci-journals` skill).
 
 **Mini template (unstructured):**
 > Heavy-metal contamination of estuarine sediments threatens benthic communities and
@@ -254,7 +254,7 @@ describe only what was actually done.
 Location, environmental setting, hydrology/land use, and the pollution context that
 motivates site placement. Reference the site map figure. Justify why these sites
 represent the system. (Detail and a `[MATERIAL GAP]` for any missing coordinate or
-descriptor; see `figures.md` for the map's CRS/scale-bar requirements.)
+descriptor; see `envsci-figures` skill for the map's CRS/scale-bar requirements.)
 
 ### 8.2 Sampling design & sample collection/treatment
 The sub-section reviewers scrutinize most.
@@ -263,7 +263,7 @@ The sub-section reviewers scrutinize most.
 - Containers, preservation (acidification, cooling, dark), holding times, field blanks.
 - **Design justification against pseudoreplication** — state the statistical unit and how
   replicates were obtained, so that the unit matches the later tests (Hurlbert 1984;
-  cross-check the design rationale in `data-analysis.md`).
+  cross-check the design rationale in `envsci-data` skill).
 
 ### 8.3 Analytical methods + instruments + QA/QC
 - Instrument and method per analyte (e.g. ICP-MS for metals, GC-MS/MS for organics),
@@ -272,11 +272,11 @@ The sub-section reviewers scrutinize most.
 - **QA/QC block is mandatory:** LOD/LOQ (with the 3σ/10σ definition used), recoveries
   (spike/CRM, the acceptance window), field vs procedural blanks, replicate RSD,
   calibration range and R². These are the inputs to **Gate D**; any analyte missing one
-  is `[MATERIAL GAP]`. (Authoritative definitions live in `data-analysis.md`.)
+  is `[MATERIAL GAP]`. (Authoritative definitions live in `envsci-data` skill.)
 
 ### 8.4 Data & statistical analysis
 - Software and versions; transformations and the basis for them; **non-detect handling**
-  (method tied to the censoring fraction — see `data-analysis.md`); significance level α;
+  (method tied to the censoring fraction — see `envsci-data` skill); significance level α;
   multiple-testing correction.
 - **Every pollution/risk index formula stated with its canonical citation** and the
   background value Bn / reference element named and justified (Igeo–Müller 1969; EF;
@@ -504,7 +504,7 @@ not a literal translation.
 ## 14. Revision drafting & the Commitment Ledger (Stage 9)
 
 When the user brings reviewer comments and you are drafting the revised manuscript text
-(the review *simulation* and the response *letter* live in `review-and-response.md`),
+(the review *simulation* and the response *letter* live in `envsci-review` skill),
 build a **Commitment Ledger** so nothing promised is silently dropped.
 
 **Decompose each reviewer comment into atomic, typed items:**
@@ -552,6 +552,6 @@ build a **Commitment Ledger** so nothing promised is silently dropped.
   `[LLM-SUPPLEMENTED]` tags for the author to close, and (for Chinese users) a brief
   Chinese structural note.
 - Drafted citations and numbers are **not** self-verified here — they pass through the
-  integrity gate (`citations-and-integrity.md`, Stages 7.5 / 7.5′).
-- The Commitment Ledger built in §14 is consumed by re-review (`review-and-response.md`,
+  integrity gate (`envsci-citations` skill, Stages 7.5 / 7.5′).
+- The Commitment Ledger built in §14 is consumed by re-review (`envsci-review` skill,
   Stage 8′) to detect `COMMITMENT_GAP`.
