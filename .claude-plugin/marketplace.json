@@ -1,6 +1,6 @@
 {
   "name": "envsci-paper-skill",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Environmental-science paper-writing skill for Claude Code and Codex: sampling data to a submission-ready manuscript, with QA/QC, statistics, pollution & risk indices, publication figures, IMRaD writing, citation integrity, peer-review simulation, and reviewer responses.",
   "owner": {
     "name": "Lasigebo-T",
@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "enviro-paper",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "source": "./",
       "description": "End-to-end environmental-science field-sampling paper authoring skill — fuses academic-research-skills rigor (integrity gates, anti-fabrication) with nature-skills concrete outputs (publication figures, section-aware writing, response letters).",
       "author": {

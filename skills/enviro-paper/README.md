@@ -14,6 +14,7 @@ writing, response letters), tailored to environmental science.
 
 | Stage | Capability |
 |-------|------------|
+| Ideation | give it your seed papers + data → it searches **recent (last-5-yr) high-quality** literature, **verifies every paper**, maps the field, and proposes **ranked, grounded innovation points** with a prior-art "scooped" check |
 | Data / QA-QC | LOD/LOQ, recoveries, blanks, RSD; **non-detect handling** (substitution / KM / ROS / MLE); units & dry/wet basis |
 | Statistics | normality + transforms, ANOVA/Tukey vs Kruskal–Wallis/Dunn, Spearman/Pearson, PCA/HCA/PERMANOVA, source apportionment (PMF, APCS-MLR) |
 | Indices & risk | **Igeo, EF, CF/PLI, Hakanson Er/RI, Nemerow, WQI**, and **US-EPA health risk HQ/HI/CR** — each with formula, canonical reference, threshold table, and a worked example |
@@ -31,6 +32,7 @@ Triggered by natural language (English **or** Chinese). Examples:
 |------|---------------------|
 | `full-pipeline` | "take my sampling data to a manuscript" · 「把这批数据写成论文」 |
 | `plan` | "help me scope this study / find the gap" · 「帮我规划 / 研究缺口」 |
+| `ideate` | "read these papers + my data and propose innovation points / research ideas" · 「基于这些文献和数据帮我想创新点 / 研究思路」 |
 | `data-analysis` | "analyze my sampling data, QA/QC, pollution indices" · 「分析采样数据、质控、污染指数、健康风险」 |
 | `figures` | "make a PCA biplot / site map / boxplot" · 「画图 / 期刊配图」 |
 | `write <section>` | "write the introduction / methods / discussion" · 「写引言 / 方法 / 讨论」 |
@@ -47,6 +49,7 @@ Triggered by natural language (English **or** Chinese). Examples:
 enviro-paper/
 ├── SKILL.md                           # lean router: pipeline, mode dispatch, quality gates
 ├── references/
+│   ├── ideation-and-novelty.md        # seed+data → recent verified literature → ranked innovation points
 │   ├── research-and-literature.md     # literature search + anti-hallucination sourcing
 │   ├── data-analysis.md               # QA/QC, non-detects, stats, indices, risk (env-sci core)
 │   ├── figures.md                     # publication-figure rules + how to use envsci_style.py

@@ -3,6 +3,25 @@
 All notable changes to `enviro-paper` are documented here.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.1.0] — 2026-06-13
+
+### Added
+- **`ideate` mode** + **`references/ideation-and-novelty.md`** — a research-ideation capability:
+  give the skill your seed papers and data, and it searches **recent (last-5-year) high-quality**
+  literature, **verifies every paper** (anti-fabrication — NOT_FOUND papers are discarded), maps the
+  field (established / contested / absent), characterises real **research gaps** (env-sci adaptation of
+  the Robinson et al. 2011 framework), and produces **ranked, grounded innovation points**. Each idea
+  carries a contribution type (theoretical / methodological / empirical-contextual), a testability
+  check against the user's own data, a **prior-art "scooped" check**, an honest calibrated novelty
+  rating, and a steel-man objection. Output is a structured **Research Idea Brief** with an
+  all-verified Literature Ledger.
+- Wired `ideate` into `SKILL.md` (mode dispatch + Stage-1 SCOPE entry point) with anti-fabrication
+  routing notes ("verify every paper; ground every gap; scooped-check").
+
+### Notes
+- This mode reuses the existing citation-integrity machinery: no fabricated literature, no manufactured
+  gaps, and anti-sycophancy / frame-lock guardrails so the ideas are defensible to a reviewer.
+
 ## [1.0.0] — 2026-06-12
 
 Initial public release.

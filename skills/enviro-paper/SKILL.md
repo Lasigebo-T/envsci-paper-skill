@@ -37,8 +37,9 @@ memory — load the mapped reference first.
 
 - **Use** for environmental-science **field-sampling and monitoring** studies: water /
   soil / sediment / sludge / pore-water / air-aerosol-particulate / ecology monitoring →
-  QA/QC, statistics, pollution & risk indices, publication figures, IMRaD drafting,
-  citation verification, peer-review simulation, response letters, journal-fit.
+  research ideation (recent-literature-grounded innovation points), QA/QC, statistics,
+  pollution & risk indices, publication figures, IMRaD drafting, citation verification,
+  peer-review simulation, response letters, journal-fit.
 - **Do not use** for non-environmental papers, or pure lab/bench studies with no field
   sampling. If the work is environmental but the user only needs one function (just a
   figure, just a citation check), enter that single mode — do **not** launch the full
@@ -51,7 +52,7 @@ is a single-stage entry point. Decimal/primed stages are gates and the re-review
 
 | # | Stage | What happens | Reference to read | Gate |
 |---|-------|--------------|-------------------|------|
-| 1 | **SCOPE / RESEARCH** | Clarify system, gap, hypotheses; build the **Study Contract** (area, matrices, spatial/temporal scope, analytes, candidate journal, claims-to-defend). | `references/research-and-literature.md` | — |
+| 1 | **SCOPE / RESEARCH** | Clarify system, gap, hypotheses; *(ideate)* search recent high-quality literature → verified gap → ranked innovation points; build the **Study Contract** (area, matrices, spatial/temporal scope, analytes, candidate journal, claims-to-defend). | `references/ideation-and-novelty.md` + `references/research-and-literature.md` | — |
 | 2 | **DATA / QAQC** | Ingest data; validate units & dw/ww basis; declare LOD/LOQ, recoveries, blanks, RSD; handle non-detects; build the **Data Ledger** (every value → source cell). | `references/data-analysis.md` | **D** |
 | 3 | **STATS / INDICES** | Normality/transform; parametric vs nonparametric; multivariate (PCA/HCA/PERMANOVA); indices (Igeo/EF/CF/PLI/Er-RI/Nemerow/WQI) + risk (HQ/HI/CR) with formula provenance. | `references/data-analysis.md` | **S** |
 | 4 | **FIGURES** | Publication figures via `scripts/envsci_style.py`; run the Figure-QA table. | `references/figures.md` | **F** |
@@ -79,6 +80,7 @@ user wants X → **read `references/Y.md` and follow it** (run the named script 
 |------|----------|-------------------------------|-------------------------------|
 | **full-pipeline** | 1→10 | "write the whole paper", "take my sampling data to a manuscript", "end-to-end" · 「从采样数据写成论文」「全流程」「帮我把这批数据写成文章」 | start at Stage 1 → `research-and-literature.md`, then walk the pipeline table |
 | **plan** | 1 | "plan / scope this study", "what's my gap", "outline" · 「帮我规划」「研究缺口」「列个提纲」「梳理思路」 | `references/research-and-literature.md` |
+| **ideate** | 1 (pre) | "read these papers + my data and propose innovation points / research ideas", "find a research angle", "what's novel here", "has this been done already" · 「基于这些文献和数据帮我想创新点 / 研究思路」「找研究空白」「这个有没有新意」「会不会被人做过」「近5年文献里找创新点」 | `references/ideation-and-novelty.md` (verify every paper; ground every gap; scooped-check) |
 | **data-analysis** | 2–3 | "analyze my sampling data", "run the stats", "QA/QC", "non-detects", "pollution indices", "risk assessment" · 「分析采样数据」「做统计」「质控」「非检出处理」「污染指数」「健康风险」「Igeo/富集因子」 | `references/data-analysis.md` |
 | **figures** | 4 | "make the figures", "boxplot by site", "PCA biplot", "site map", "publication figure" · 「画图」「出图」「箱线图」「PCA双标图」「点位图」「期刊配图」 | `references/figures.md` (+ run `scripts/envsci_style.py`) |
 | **write `<section>`** | 5 | "write the intro/methods/results/discussion/abstract" · 「写引言/方法/结果/讨论/摘要」 | `references/writing.md` |

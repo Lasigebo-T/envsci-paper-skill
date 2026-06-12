@@ -10,7 +10,7 @@ pollution-risk indices → publication figures → IMRaD writing → citation in
 peer-review simulation → reviewer-response letter → target-journal fit.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-1.0.0-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-1.1.0-blue.svg)](CHANGELOG.md)
 [![Works with](https://img.shields.io/badge/Works_with-Claude_Code_%7C_Codex-1F7A4D.svg)](#installation)
 [![Standard](https://img.shields.io/badge/Standard-Agent_Skills-blueviolet.svg)](https://agentskills.io/)
 [![Scripts](https://img.shields.io/badge/Scripts-tested-brightgreen.svg)](#scripts)
@@ -33,6 +33,7 @@ One router-style skill — **`enviro-paper`** — = a lean `SKILL.md` + 7 on-dem
 | File | Purpose |
 |------|---------|
 | `SKILL.md` | Lean router: the 10-stage pipeline, the mode-dispatch table, and the quality gates. |
+| `references/ideation-and-novelty.md` | **Research ideation**: from your seed papers + data, search recent high-quality literature, verify it, find the real gap, and propose ranked, grounded innovation points (with a "scooped" prior-art check). |
 | `references/research-and-literature.md` | Literature search (Crossref/OpenAlex/Semantic Scholar/PubMed) + anti-hallucination sourcing. |
 | `references/data-analysis.md` | **The env-sci core**: QA/QC, non-detects, statistics, and every pollution/risk index with formula + reference + worked example. |
 | `references/figures.md` | Publication-figure rules + how to drive `envsci_style.py`. |
@@ -114,6 +115,7 @@ right reference.
 
 | You want… | Try saying |
 |-----------|-----------|
+| Research ideas / novelty | "read these papers + my data and propose innovation points" · 「基于这些文献和数据帮我想创新点 / 研究思路」 |
 | End-to-end paper | "take my sampling data to a manuscript" · 「把这批数据写成论文」 |
 | Data analysis + indices | "analyze my data, QA/QC, pollution indices, health risk" · 「分析采样数据、质控、污染指数、健康风险」 |
 | A figure | "make a PCA biplot / site map / boxplot by site" · 「画 PCA 双标图 / 点位图 / 箱线图」 |
