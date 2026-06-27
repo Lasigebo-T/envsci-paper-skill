@@ -190,12 +190,12 @@ py scripts/ga_canvas.py --list-presets
 ### §5.2 `deck_build.py` — PPTX deck builder
 
 ```bash
-py scripts/deck_build.py outline.json --template conference --out talk.pptx
-py scripts/deck_build.py outline.json --template group --out group_meeting.pptx
-py scripts/deck_build.py outline.json --template defense --out defense.pptx
+py scripts/deck_build.py outline.json --out talk.pptx
+py scripts/deck_build.py outline.json --out group_meeting.pptx
+py scripts/deck_build.py outline.json --out defense.pptx
 ```
 
-`--out` controls the output filename; it is independent of `--template`.
+The template is selected by the `template` field inside the outline JSON (conference / group / defense), not by a CLI flag; `--out` only sets the output filename.
 
 **Outline JSON schema — all fields:**
 

@@ -37,7 +37,7 @@ Two jobs for environmental-science manuscripts:
    unconfirmed," no escape hatch. Every quantitative claim traces to a real source
    passage or the Data Ledger.
    The integrity gate now also (a) verifies **source anchors** on high-risk claims
-   (page/section/quote → `ANCHOR_VERIFIED/UNRESOLVED/MISMATCH/MISSING`, see
+   (page/section/quote → `ANCHOR_VERIFIED / ANCHOR_UNRESOLVED / ANCHOR_MISMATCH / ANCHOR_MISSING`, see
    references §B-anchor) and (b) runs a **temporal-integrity audit** (Phase C5:
    forward references, superseded guideline editions, epoch/tense mismatch). Run
    `check_references.py --manuscript-year YYYY` for the offline forward-reference

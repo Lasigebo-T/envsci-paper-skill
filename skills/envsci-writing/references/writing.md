@@ -115,7 +115,7 @@ Anchor syntax (CSL-locator style, authoring-time annotation):
 - section `[@key, §3.2]`
 - quote `[@key, "verbatim ≤25 words"]` (quoted words also appear in the prose)
 
-These anchors are verified at the integrity gate by **envsci-citations** (`ANCHOR_VERIFIED/UNRESOLVED/MISMATCH/MISSING`). A high-risk claim with no anchor fails Gate I-2. Anchors are not necessarily printed: keep page numbers for direct quotations per journal style; for paraphrase the anchor stays in the audit trail.
+These anchors are verified at the integrity gate by **envsci-citations** (`ANCHOR_VERIFIED / ANCHOR_UNRESOLVED / ANCHOR_MISMATCH / ANCHOR_MISSING`). A high-risk claim with no anchor fails Gate I-2. Anchors are not necessarily printed: keep page numbers for direct quotations per journal style; for paraphrase the anchor stays in the audit trail.
 
 ---
 
