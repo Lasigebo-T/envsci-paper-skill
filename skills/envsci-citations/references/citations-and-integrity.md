@@ -45,7 +45,8 @@ Scan actively for all five. (GPTZero × NeurIPS 2025; Adams et al., 2026, *arXiv
 2. **Venue Exploitation** (PH+PAC): real journal name + fabricated article details — defeats "is this journal real?"
 3. **Mashup Fabrication** (PH): real authors + a subtitle from a different paper + a book/journal name from a third → a combination that never existed.
 4. **Temporal Masking** (SH): correct author + correct topic + wrong year/edition — nearly invisible without a DOI lookup.
-  (Operationalised in **Phase C5** — forward references `TEMPORAL_FORWARD_REF`, superseded standards `TEMPORAL_SUPERSEDED`, epoch/tense mismatch `TEMPORAL_EPOCH_MISMATCH`.)
+
+   (Operationalised in **Phase C5** — forward references `TEMPORAL_FORWARD_REF`, superseded standards `TEMPORAL_SUPERSEDED`, epoch/tense mismatch `TEMPORAL_EPOCH_MISMATCH`.)
 5. **DOI Misdirection** (≈64% of fake-DOI cases; Walters et al., 2023): a fabricated DOI that *resolves to a real but unrelated paper*. **A DOI that resolves is NOT proof** — the resolved title must cross-check against the cited title (see §3).
 
 ---
@@ -144,7 +145,7 @@ Run alongside Phase C. Three checks:
 
 - **T1 Forward reference / impossible citation.** A cited source dated after the manuscript's writing year, or a logically impossible timeline (a priority claim predating its own cited basis). Verdict `TEMPORAL_FORWARD_REF` (HIGH/SERIOUS). Offline pre-screen: `check_references.py --manuscript-year YYYY`.
 - **T2 Superseded standard / guideline edition.** A claim citing an outdated edition of a standard or a value since revised — WHO/EPA/GB guideline values, IRIS RfD/SF, SQG TEL–PEL / ERL–ERM. Cross-check the *current* edition (extends §6). Verdict `TEMPORAL_SUPERSEDED`; severity scales with impact (SERIOUS if the revised value flips an exceedance / risk conclusion).
-- **T3 Epoch / tense mismatch.** Claims using "to date / most recent / first to report / currently" that cite stale sources or are contradicted by earlier literature (link to **envsci-ideate** scooped-check). Verdict `TEMPORAL_EPOCH_MISMATCH` (NOTE–MEDIUM); reason in Phase E.
+- **T3 Epoch / tense mismatch.** Claims using "to date / most recent / first to report / currently" that cite stale sources or are contradicted by earlier literature (link to **envsci-ideate** scooped-check). Verdict `TEMPORAL_EPOCH_MISMATCH` (NOTE–MEDIUM); flag and document the distortion in Phase E.
 
 Default verdict when clean: `TEMPORAL_OK`.
 
@@ -290,6 +291,7 @@ Options:
   --format {auto,bibtex,json,md}   Input format (default: auto-detect by extension/content).
   --min-year N                     Lowest plausible publication year (default 1900).
   --max-year N                     Highest plausible publication year (default 2026).
+  --manuscript-year YYYY           Manuscript writing year; flags any reference with year > YYYY as TEMPORAL_FORWARD_REF (HIGH).
   --json                           Emit a machine-readable JSON report instead of text.
   --out PATH                       Write the report to a file instead of stdout.
   --selftest                       Run the built-in self-test (no file needed) and exit.
@@ -390,8 +392,8 @@ Mode: [Pre-review / Final (fresh)]   Verdict: [PASS / PASS WITH NOTES / FAIL]
 | Env-sci formulas/standards (§6) | … | … | … |
 | Originality (D)                 | … | … | … CLOSE_MATCH/VERBATIM |
 | Claim verification (E)          | … | … | … MAJOR_DISTORTION/UNVERIFIABLE |
-| Anchor verification | … | … | high-risk claims pinned & verified |
-| Temporal integrity | … | … | forward-ref / superseded-edition / epoch |
+| Anchor verification | … | … | ANCHOR_MISMATCH / ANCHOR_MISSING |
+| Temporal integrity | … | … | TEMPORAL_FORWARD_REF / TEMPORAL_SUPERSEDED / TEMPORAL_EPOCH_MISMATCH |
 
 ## Issues (severity-sorted)
 ### SERIOUS (must fix) | ### MEDIUM (must fix) | ### MINOR (recommended)
