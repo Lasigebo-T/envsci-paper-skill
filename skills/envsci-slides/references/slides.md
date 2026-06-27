@@ -31,7 +31,7 @@ One core message: one sentence with a verb
 Archetype      : (pick from §3 for GA/TOC; from §4 for deck)
 Verified source: manuscript section, figure ID, or Data-Ledger cell that authorizes each claim
 Target journal : (for GA/TOC — drives size via envsci-journals)
-Canvas preset  : elsevier-ga | est-toc | (custom)
+Canvas preset  : elsevier-ga | est-toc
 ```
 
 **Hard rules:**
@@ -47,14 +47,14 @@ Canvas preset  : elsevier-ga | est-toc | (custom)
 
 ### §2.1 Elsevier graphical abstract (preset: `elsevier-ga`)
 
-- Canvas: minimum **531 × 1328 px (height × width)** at ≥ 150 dpi for raster; vector (SVG/EPS/PDF) also accepted and preferred for scalability.
-- Print-legibility target: must read clearly when printed at **~5 × 13 cm** (roughly business-card landscape height).
+- Canvas: minimum **531 × 1328 px (height × width) — i.e. 1328 px wide × 531 px tall (landscape)** at ≥ 150 dpi for raster; vector (SVG/EPS/PDF) also accepted and preferred for scalability.
+- Print-legibility target: must read clearly when printed at **~13 cm wide × 5 cm tall** (landscape).
 - Use `ga_canvas.py --preset elsevier-ga` — this delivers the correct px/dpi canvas so you never have to re-derive from the Guide for Authors.
 - Title text, highlights text, and abstract wording are NOT produced here — delegate to envsci-writing; pull the approved text back into the canvas.
 
 ### §2.2 ACS ES&T TOC graphic (preset: `est-toc`)
 
-- Canvas: **3.25 × 1.75 in (8.255 × 4.445 cm), ≥ 300 dpi** raster; SVG-first workflow recommended.
+- Canvas: **3.25 × 1.75 in, ≥ 300 dpi** raster; SVG-first workflow recommended.
 - The TOC graphic must be accompanied by a **50–60-word synopsis** (plain-language, supplied by envsci-writing, approved before submission). The synopsis is NOT the abstract; it is a short standalone description of the TOC image.
 - Use `ga_canvas.py --preset est-toc` — this sets the exact dimensions and DPI.
 - Synopsis word count: count with a word counter before submission; both under-50 and over-60 are noncompliant.
@@ -69,7 +69,7 @@ Canvas preset  : elsevier-ga | est-toc | (custom)
 
 ---
 
-## §3 GA archetype catalogue (env-sampling oriented)
+## §3 GA archetype catalogue (env-sci field-sampling oriented)
 
 Each archetype has a `do / don't` pair and an **information-density ceiling** — a GA is not a Results figure; it should convey one message to a reader who has spent three seconds on it.
 
@@ -127,7 +127,7 @@ This is the recommended archetype for peeper-based SWI nutrient flux studies. Th
 
 ## §4 Deck archetypes + rhythm templates
 
-The deck is a RE-COMPOSITION of verified content — every slide's claim must already exist in the I-gate-cleared manuscript. The rhythm template is a pacing guide, not a rigid order; adapt to the talk length and audience.
+The deck is a RE-COMPOSITION of verified content — every slide's claim must already exist in the I-gate-cleared manuscript. The rhythm template is a pacing guide, not a rigid order; adapt to the talk length and audience. The durations and slide counts below are **advisory, not enforced by deck_build.py** — the script renders whatever slides the outline JSON contains.
 
 ### §4.1 Conference (~10–12 min; ~12–15 slides)
 
@@ -195,6 +195,8 @@ py scripts/deck_build.py outline.json --template group --out group_meeting.pptx
 py scripts/deck_build.py outline.json --template defense --out defense.pptx
 ```
 
+`--out` controls the output filename; it is independent of `--template`.
+
 **Outline JSON schema — all fields:**
 
 ```json
@@ -229,14 +231,14 @@ py scripts/deck_build.py outline.json --template defense --out defense.pptx
   "heading": "Pore-water SRP flux is net-positive at all five sites",
   "bullets": [
     "Flux direction: sediment → overlying water at every site",
-    "Highest release at Site S3 (near macrophyte bed)"
+    "Highest release at Site [site-ID] (near macrophyte bed)"
   ],
-  "notes": "Explain the peeper method briefly: dialysis cells equilibrated for [N] days, SRP analysed by [method]. Point to Site S3 on the figure — note the connection to anoxic Fe-P cycling described in the next slide. Anticipated question: detection limits for pore-water SRP — answer is on backup slide B2.",
+  "notes": "Explain the peeper method briefly: dialysis cells equilibrated for [N] days, SRP analysed by [method]. Point to Site [site-ID] on the figure — note the connection to anoxic Fe-P cycling described in the next slide. Anticipated question: detection limits for pore-water SRP — answer is on backup slide B2.",
   "image": "figures/fig3_srp_flux_profile.svg"
 }
 ```
 
-Note: numeric values in speaker notes must be drawn from the Data Ledger / verified manuscript — the placeholder `[N]` and `[method]` above are intentional; fill them from your verified source before use.
+Note: numeric values and site identifiers in speaker notes must be drawn from the Data Ledger / verified manuscript — the placeholders `[N]`, `[method]`, and `[site-ID]` above are intentional; fill them from your verified source before use.
 
 ### §5.3 Templates
 
@@ -248,7 +250,8 @@ Note: numeric values in speaker notes must be drawn from the Data Ledger / verif
 
 ```bash
 pip install -r scripts/requirements.txt
-# Core: python-pptx, Pillow (for image handling), cairosvg or svglib (for SVG→PNG in PPTX)
+# Core: matplotlib (ga_canvas.py renders BOTH the SVG and the PNG via its Agg backend savefig)
+#       python-pptx (deck_build.py builds the .pptx)
 # Use `py` launcher on Windows if `python` opens the Microsoft Store
 ```
 
@@ -262,7 +265,7 @@ pip install -r scripts/requirements.txt
 
 | # | Check | Pass condition | Type |
 |---|---|---|---|
-| S1 | Thumbnail legibility | Core message readable at 5 × 13 cm (Elsevier) or 3.25 × 1.75 in (ES&T) without magnification; no text overlap | HARD |
+| S1 | Thumbnail legibility | Core message readable at ~13 cm wide × 5 cm tall (Elsevier) or 3.25 × 1.75 in (ES&T) without magnification; no text overlap | HARD |
 | S2 | Word/information density | ≤ 5 labeled compartments or ≤ 8 site markers or ≤ 3 flux arrows (per archetype ceiling in §3) | HARD |
 | S3 | Colorblind-safe palette | Okabe–Ito / Tol-bright / viridis; no red–green-only encoding | HARD |
 | S4 | Units present | Every quantity shown carries its unit (flux: mmol m⁻² d⁻¹; concentration: µg L⁻¹; etc.) | HARD |
@@ -303,7 +306,7 @@ Deliver:
 The deck must stand alone without the manuscript: every slide's claim is self-evident from the slide + speaker notes + figure. Deliver:
 - `talk.pptx` (or `group_meeting.pptx` / `defense.pptx`).
 - The `outline.json` source file (for future edits without reverse-engineering the PPTX).
-- Gate-S verdict confirming rows S9–S12 all pass (and S13–S14 as noted).
+- Gate-S verdict confirming rows S9–S12 all pass (S13–S14 are SOFT: flag if absent but do not block delivery).
 
 ### §7.3 Integrity pointer → envsci-citations
 
