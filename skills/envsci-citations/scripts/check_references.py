@@ -483,6 +483,7 @@ def check_references(
     fmt: str,
     min_year: int = DEFAULT_MIN_YEAR,
     max_year: int = DEFAULT_MAX_YEAR,
+    manuscript_year: Optional[int] = None,
 ) -> List[Issue]:
     """Run the full structural check suite, returning a flat list of Issues."""
     issues: List[Issue] = []
@@ -491,6 +492,8 @@ def check_references(
     for ref in refs:
         issues.extend(_check_doi(ref))
         issues.extend(_check_year(ref, min_year, max_year))
+        if manuscript_year is not None:
+            issues.extend(_check_forward_reference(ref, manuscript_year))
         if fmt != "md":
             issues.extend(_check_required_fields(ref))
 
@@ -532,6 +535,27 @@ def _check_year(ref: Reference, min_year: int, max_year: int) -> List[Issue]:
                 "YEAR_IMPLAUSIBLE",
                 ref.key,
                 f"year {y} outside plausible range [{min_year}, {max_year}]",
+            )
+        ]
+    return []
+
+
+def _check_forward_reference(ref: Reference, manuscript_year: int) -> List[Issue]:
+    """Cited source dated after the manuscript's writing year = impossible basis."""
+    if not ref.year:
+        return []
+    m = re.search(r"(\d{4})", ref.year)
+    if not m:
+        return []  # unparseable year already flagged by _check_year
+    y = int(m.group(1))
+    if y > manuscript_year:
+        return [
+            Issue(
+                "HIGH",
+                "TEMPORAL_FORWARD_REF",
+                ref.key,
+                f"cited year {y} is after manuscript year {manuscript_year} "
+                "(forward reference / impossible citation)",
             )
         ]
     return []
@@ -711,6 +735,18 @@ def run_selftest() -> int:
     assert counts["MEDIUM"] == 1, counts
     assert counts["LOW"] == 1, counts
 
+    # Forward reference (cited year > manuscript year) -> HIGH TEMPORAL_FORWARD_REF.
+    fwd_refs = [
+        Reference("future", "Ahead, Z.", "Cited from the future", "2027", "STOTEN", "10.1016/j.stoten.2027.1"),
+        Reference("okpast", "Past, Y.", "A normal prior", "2019", "Water Res.", "10.1016/j.watres.2019.2"),
+    ]
+    fwd_issues = check_references(fwd_refs, fmt="bibtex", manuscript_year=2025)
+    fwd_codes = Counter(i.code for i in fwd_issues)
+    assert fwd_codes["TEMPORAL_FORWARD_REF"] == 1, fwd_codes
+    # Without manuscript_year, no temporal check fires.
+    none_issues = check_references(fwd_refs, fmt="bibtex")
+    assert Counter(i.code for i in none_issues)["TEMPORAL_FORWARD_REF"] == 0, none_issues
+
     # Format-detection sanity.
     assert detect_format(Path("x.bib"), "@article{a, doi={10.1/x}}") == "bibtex"
     assert detect_format(Path("x.json"), "[]") == "json"
@@ -771,6 +807,13 @@ def main(argv: Optional[List[str]] = None) -> int:
         help=f"Highest plausible publication year (default {DEFAULT_MAX_YEAR}).",
     )
     parser.add_argument(
+        "--manuscript-year",
+        type=int,
+        default=None,
+        help="Manuscript writing year; enables forward-reference check "
+        "(any cited year > this is flagged TEMPORAL_FORWARD_REF).",
+    )
+    parser.add_argument(
         "--json",
         action="store_true",
         help="Emit a machine-readable JSON report instead of human-readable text.",
@@ -822,7 +865,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             file=sys.stderr,
         )
 
-    issues = check_references(refs, fmt, min_year=args.min_year, max_year=args.max_year)
+    issues = check_references(refs, fmt, min_year=args.min_year, max_year=args.max_year, manuscript_year=args.manuscript_year)
     report = build_report(refs, issues, fmt, args.min_year, args.max_year)
 
     output = json.dumps(report, indent=2, ensure_ascii=False) if args.json else render_text(report)
