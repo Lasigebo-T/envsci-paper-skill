@@ -102,6 +102,34 @@ Every reference gets an explicit **Phase A verdict before any Phase B context ch
 - SERIOUS: severe misrepresentation, wrong data. MEDIUM: context drift, approximate data. MINOR: correct but could be more precise.
 - **Compound claims are decomposed:** "concentrations exceeded the guideline AND increased downstream" → judge each sub-claim independently; the citation takes the verdict of its **weakest** sub-claim. Partial support routes to FAIL, never to a soft pass.
 
+#### B-anchor — Source-anchor verification (high-risk claims)
+
+A **high-risk claim** is (i) any value attributed to a source (concentration,
+recovery, index value, guideline/threshold, literature statistic), (ii) any
+direct quotation, or (iii) any specific contested conclusion attributed to a
+source. Per **envsci-writing**, every high-risk claim MUST carry a source anchor:
+
+- page: `[@key, p. 42]` / range `[@key, pp. 42–45]`
+- section: `[@key, §3.2]`
+- quote: `[@key, "verbatim ≤25 words"]` (the quoted words also appear in prose)
+
+During the online source lookup (§3), for each high-risk claim:
+1. Resolve the anchor location — page within the source's page range; the
+   section exists; the quoted text is present at/near the anchor.
+2. Confirm the anchored location actually supports the claim (Phase B context).
+
+Verdicts:
+- `ANCHOR_VERIFIED` — location resolves and supports the claim.
+- `ANCHOR_UNRESOLVED` — source full text not accessible; record as NOTE (not a
+  fail by itself); flag for manual check.
+- `ANCHOR_MISMATCH` — quote not found, or page/section out of range → **FAIL**.
+- `ANCHOR_MISSING` — a high-risk claim carries no anchor → **FAIL at I-2**
+  (SERIOUS at I-1).
+
+Anchors are authoring/audit metadata. At formatting (§7), keep page numbers for
+direct quotations per journal style; for paraphrased claims the anchor stays in
+the audit trail and is not printed.
+
 ### Phase C — Data (the env-sci heart of internal consistency)
 
 - **C1 Statistical cross-reference:** any number attributed to an external source is traced to that source. Secondary-citing a number that has a traceable primary source → flag.
