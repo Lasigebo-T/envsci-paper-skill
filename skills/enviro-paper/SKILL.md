@@ -3,7 +3,7 @@ name: enviro-paper
 description: >-
   END-TO-END umbrella orchestrator that takes a whole environmental-science
   field-sampling / monitoring study from raw data to a submission-ready manuscript
-  with reviewer-response letters, by routing across the 8 envsci-* function skills
+  with reviewer-response letters, by routing across the 9 envsci-* function skills
   (+ scipilot-figure-skill). Use ONLY for full-pipeline / multi-stage requests that
   span ideation→data→figures→writing→citations→review→response→journal in one go:
   "把这批采样数据写成论文"、"全流程帮我从数据到投稿"、"end-to-end 写完整篇"、
@@ -14,7 +14,7 @@ description: >-
   that one skill directly: envsci-ideate (创新点/研究空白), envsci-litsearch (查文献/防杜撰),
   envsci-data (QA/QC、统计、污染与风险指数), envsci-figures (科研配图), envsci-writing
   (写/润色 IMRaD), envsci-citations (文献格式+诚信核查), envsci-review (模拟审稿+回复信),
-  envsci-journals (选刊/投稿格式). Not for non-environmental or pure lab/bench studies.
+  envsci-journals (选刊/投稿格式), envsci-slides (图文摘要/汇报幻灯). Not for non-environmental or pure lab/bench studies.
 ---
 
 # enviro-paper — Umbrella Orchestrator (Router / Table of Contents)
@@ -40,6 +40,7 @@ figure logic, citation checks, or review rubrics from memory — invoke the mapp
   - citation formatting + the integrity gate → **envsci-citations**
   - peer-review simulation + response letters → **envsci-review**
   - journal scope/format/fit → **envsci-journals**
+  - graphical abstract / TOC graphic / presentation deck → **envsci-slides**
 - **Do NOT use** for non-environmental papers or pure lab/bench studies without field sampling.
 - **Ambiguous?** If materials span two or more stages but the user has not asked for the
   whole pipeline, **ask which workflow they want** — do not auto-launch end-to-end.
@@ -64,7 +65,9 @@ Hand each stage to its skill via the **Skill tool**; let that skill read its own
 | **8′** | **RE-REVIEW** — verify each commitment against the revised manuscript | **envsci-review** | decision |
 | **9′** | **RE-REVISE** — apply remaining fixes | **envsci-writing** | — |
 | **7.5′** | **FINAL INTEGRITY** — **fresh from-scratch** full re-verification; **zero issues** | **envsci-citations** | **I-2 (BLOCKING)** |
-| 10 | **RESPONSE / FINALIZE** — point-by-point response letter; data-availability statement; journal-fit format | **envsci-review** + **envsci-journals** | — |
+| 10 | **RESPONSE / FINALIZE** — point-by-point response letter; data-availability statement; journal-fit format | **envsci-review** + **envsci-journals** + **envsci-slides** | — |
+
+The graphical abstract is produced in Stage 10 (FINALIZE) as part of the submission package; the presentation deck is a post-acceptance dissemination artifact — invoke **envsci-slides** on its own, not as a blocking stage. Slides consume only I-gate-verified content.
 
 The integrity gate runs **before review** (so reviewers never audit a fabricated paper)
 **and again, fresh from scratch, after all revision** (Gate I-2 must be zero-issue).
