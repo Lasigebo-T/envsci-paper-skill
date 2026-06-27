@@ -1,10 +1,10 @@
 # Installing the envsci-paper skill collection
 
-This repo is a **collection of 9 Agent Skills** (1 umbrella `enviro-paper` + 8 `envsci-*` function
+This repo is a **collection of 10 Agent Skills** (1 umbrella `enviro-paper` + **9** `envsci-*` function
 skills). Each is one folder under `skills/`, centred on `SKILL.md` (+ `references/` and, where
 relevant, `scripts/`). Copy whole folders, not just `SKILL.md`.
 
-You can install **all 9** (recommended) or **just the one(s) you need** — each skill is standalone
+You can install **all 10** (recommended) or **just the one(s) you need** — each skill is standalone
 and independently selectable.
 
 ```text
@@ -17,7 +17,8 @@ skills/
 ├── envsci-writing/      # IMRaD drafting + polishing
 ├── envsci-citations/    # citation formatting + integrity gate (+ scripts/check_references.py)
 ├── envsci-review/       # peer-review simulation + response letters
-└── envsci-journals/     # target-journal scope/format + fit
+├── envsci-journals/     # target-journal scope/format + fit
+└── envsci-slides/      # graphical abstract + presentation deck (+ scripts/)
 ```
 
 ## 1. Claude Code
@@ -28,7 +29,7 @@ claude plugin marketplace add Lasigebo-T/envsci-paper-skill
 claude plugin install enviro-paper@envsci-paper-skill
 ```
 
-**Manual — all 9:**
+**Manual — all 10:**
 ```bash
 git clone https://github.com/Lasigebo-T/envsci-paper-skill.git
 mkdir -p ~/.claude/skills
@@ -72,6 +73,9 @@ cp -R scipilot-figure-skill ~/.claude/skills/      # or ~/.codex/skills/
 # from inside the repo
 python skills/envsci-citations/scripts/check_references.py --selftest    # selftest: OK
 python skills/envsci-figures/scripts/envsci_style.py --demo all          # 12 demo figures
+py skills/envsci-slides/scripts/ga_canvas.py --selftest      # selftest: OK
+py skills/envsci-slides/scripts/deck_build.py --selftest     # selftest: OK
+pip install -r skills/envsci-slides/scripts/requirements.txt  # python-pptx, matplotlib
 ```
 Use `py` instead of `python` on Windows if `python` opens the Microsoft Store. The figure script
 needs `matplotlib numpy pandas` (`pip install -r skills/envsci-figures/scripts/requirements.txt`).

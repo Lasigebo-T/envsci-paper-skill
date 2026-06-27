@@ -3,6 +3,26 @@
 All notable changes to `enviro-paper` are documented here.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.1.0] — 2026-06-28
+
+### Added
+- **`envsci-slides`** — new sibling skill: builds a journal-spec **graphical
+  abstract / TOC graphic** (`ga_canvas.py`, SVG + PNG at correct px/dpi) and a
+  **presentation deck** with speaker notes (`deck_build.py`, python-pptx;
+  templates conference / group / defense). Standalone palette; composes with
+  scipilot-figure-skill; introduces no new numbers/claims.
+- **envsci-citations** — **source-anchor verification** for high-risk claims
+  (page/section/quote → `ANCHOR_VERIFIED/UNRESOLVED/MISMATCH/MISSING`, Phase B)
+  and a **temporal-integrity audit** (Phase C5: forward references, superseded
+  guideline editions, epoch/tense mismatch). `check_references.py` gains
+  `--manuscript-year` for an offline forward-reference screen.
+- **envsci-writing** — high-risk claims (numbers / direct quotes / key
+  conclusions) must emit a source anchor, verified later by envsci-citations.
+
+### Changed
+- Umbrella `enviro-paper` registers the 9th function skill; the graphical
+  abstract is produced in Stage 10 (FINALIZE).
+
 ## [2.0.0] — 2026-06-13
 
 ### Changed (breaking — restructured into a collection)

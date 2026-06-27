@@ -7,18 +7,20 @@ monitoring papers — pick one for a single task, or run the umbrella for the wh
 data → manuscript → reviewer-response pipeline. For **Claude Code** and **Codex**.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-2.0.0-blue.svg)](CHANGELOG.md)
-[![Skills](https://img.shields.io/badge/Skills-9-brightgreen.svg)](#the-collection)
+[![Version](https://img.shields.io/badge/Version-2.1.0-blue.svg)](CHANGELOG.md)
+[![Skills](https://img.shields.io/badge/Skills-10-brightgreen.svg)](#the-collection)
 [![Works with](https://img.shields.io/badge/Works_with-Claude_Code_%7C_Codex-1F7A4D.svg)](#installation)
 [![Standard](https://img.shields.io/badge/Standard-Agent_Skills-blueviolet.svg)](https://agentskills.io/)
 
 </div>
 
-> **v2.0.0 — now a collection.** The former single `enviro-paper` skill is split into **8 standalone
+> **v2.1.0 — now a collection of 10.** The former single `enviro-paper` skill is split into **9 standalone
 > function skills + 1 umbrella orchestrator**, so you can invoke exactly the capability you need
 > (e.g. just `envsci-figures`, just `envsci-ideate`) without loading the whole pipeline. It also
 > composes with the separate **[scipilot-figure-skill](https://github.com/Haojae/scipilot-figure-skill)**
-> for general figure methodology.
+> for general figure methodology. v2.1.0 adds **`envsci-slides`** for graphical abstracts and
+> presentation decks, and extends **`envsci-citations`** with source-anchor verification and
+> temporal-integrity auditing.
 
 ---
 
@@ -35,6 +37,7 @@ data → manuscript → reviewer-response pipeline. For **Claude Code** and **Co
 | **`envsci-citations`** | Citation formatting to journal style + **blocking anti-fabrication integrity gate** + `check_references.py` | "核对参考文献 / 查 DOI / 查有没有编造的文献" |
 | **`envsci-review`** | 3-reviewer pre-submission simulation + point-by-point reviewer-response letters | "模拟审稿 / 逐条回复审稿意见" |
 | **`envsci-journals`** | Target-journal scope/format guide + journal-fit decision | "投哪个期刊 / 按 STOTEN 格式" |
+| **`envsci-slides`** | Graphical abstract + presentation deck (GA/TOC + .pptx with speaker notes) | "做图摘 / 做汇报幻灯片 / conference deck" |
 
 ➕ **Separate companion (install on its own):**
 **[scipilot-figure-skill](https://github.com/Haojae/scipilot-figure-skill)** — a general scientific-figure
@@ -46,7 +49,7 @@ advisor (data profiling, chart selection, visual-QA closed loop, journal specs, 
 ## Installation
 
 Each skill is one folder centred on `SKILL.md` (+ `references/` and, where relevant, `scripts/`).
-Installing the whole repo gives you **all 9 skills**, each independently selectable.
+Installing the whole repo gives you **all 10 skills**, each independently selectable.
 
 ### 1. Claude Code
 
@@ -56,7 +59,7 @@ claude plugin marketplace add Lasigebo-T/envsci-paper-skill
 claude plugin install enviro-paper@envsci-paper-skill
 ```
 
-**Manual (all 9, always works):**
+**Manual (all 10, always works):**
 ```bash
 git clone https://github.com/Lasigebo-T/envsci-paper-skill.git
 mkdir -p ~/.claude/skills
