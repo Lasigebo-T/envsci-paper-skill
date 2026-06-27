@@ -104,16 +104,13 @@ Every reference gets an explicit **Phase A verdict before any Phase B context ch
 
 #### B-anchor — Source-anchor verification (high-risk claims)
 
-A **high-risk claim** is (i) any value attributed to a source (concentration,
-recovery, index value, guideline/threshold, literature statistic), (ii) any
-direct quotation, or (iii) any specific contested conclusion attributed to a
-source. Per **envsci-writing**, every high-risk claim MUST carry a source anchor:
+A **high-risk claim** is (i) any value attributed to a source (concentration, recovery, index value, guideline/threshold, literature statistic), (ii) any direct quotation, or (iii) any specific contested conclusion attributed to a source. Per **envsci-writing**, every high-risk claim MUST carry a source anchor:
 
 - page: `[@key, p. 42]` / range `[@key, pp. 42–45]`
 - section: `[@key, §3.2]`
 - quote: `[@key, "verbatim ≤25 words"]` (the quoted words also appear in prose)
 
-During the online source lookup (§3), for each high-risk claim:
+During the Phase B online review (full text accessed), for each high-risk claim:
 1. Resolve the anchor location — page within the source's page range; the
    section exists; the quoted text is present at/near the anchor.
 2. Confirm the anchored location actually supports the claim (Phase B context).
@@ -121,14 +118,13 @@ During the online source lookup (§3), for each high-risk claim:
 Verdicts:
 - `ANCHOR_VERIFIED` — location resolves and supports the claim.
 - `ANCHOR_UNRESOLVED` — source full text not accessible; record as NOTE (not a
-  fail by itself); flag for manual check.
+  fail by itself); flag for manual check. At I-2, any ANCHOR_UNRESOLVED from I-1
+  that has not been manually resolved is re-flagged and must be cleared before
+  PASS.
 - `ANCHOR_MISMATCH` — quote not found, or page/section out of range → **FAIL**.
-- `ANCHOR_MISSING` — a high-risk claim carries no anchor → **FAIL at I-2**
-  (SERIOUS at I-1).
+- `ANCHOR_MISSING` — a high-risk claim carries no anchor → **FAIL** (SERIOUS).
 
-Anchors are authoring/audit metadata. At formatting (§7), keep page numbers for
-direct quotations per journal style; for paraphrased claims the anchor stays in
-the audit trail and is not printed.
+Anchors are authoring/audit metadata. At formatting (§7), keep page numbers for direct quotations per journal style; for paraphrased claims the anchor stays in the audit trail and is not printed.
 
 ### Phase C — Data (the env-sci heart of internal consistency)
 
