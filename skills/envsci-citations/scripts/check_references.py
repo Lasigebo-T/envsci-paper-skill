@@ -541,7 +541,11 @@ def _check_year(ref: Reference, min_year: int, max_year: int) -> List[Issue]:
 
 
 def _check_forward_reference(ref: Reference, manuscript_year: int) -> List[Issue]:
-    """Cited source dated after the manuscript's writing year = impossible basis."""
+    """Cited source dated after the manuscript's writing year = impossible basis.
+
+    May co-fire with YEAR_IMPLAUSIBLE if the cited year also exceeds max_year;
+    that is intentional — the two checks are orthogonal.
+    """
     if not ref.year:
         return []
     m = re.search(r"(\d{4})", ref.year)
@@ -739,6 +743,7 @@ def run_selftest() -> int:
     fwd_refs = [
         Reference("future", "Ahead, Z.", "Cited from the future", "2027", "STOTEN", "10.1016/j.stoten.2027.1"),
         Reference("okpast", "Past, Y.", "A normal prior", "2019", "Water Res.", "10.1016/j.watres.2019.2"),
+        Reference("sameyr", "Now, N.", "Same year as manuscript", "2025", "EP", "10.1016/j.envpol.2025.3"),
     ]
     fwd_issues = check_references(fwd_refs, fmt="bibtex", manuscript_year=2025)
     fwd_codes = Counter(i.code for i in fwd_issues)
@@ -865,7 +870,10 @@ def main(argv: Optional[List[str]] = None) -> int:
             file=sys.stderr,
         )
 
-    issues = check_references(refs, fmt, min_year=args.min_year, max_year=args.max_year, manuscript_year=args.manuscript_year)
+    issues = check_references(
+        refs, fmt, min_year=args.min_year, max_year=args.max_year,
+        manuscript_year=args.manuscript_year,
+    )
     report = build_report(refs, issues, fmt, args.min_year, args.max_year)
 
     output = json.dumps(report, indent=2, ensure_ascii=False) if args.json else render_text(report)
