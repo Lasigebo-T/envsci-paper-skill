@@ -38,6 +38,7 @@ PRESETS = {
 def build_canvas(preset: str, title: str = "", subtitle: str = ""):
     import matplotlib
     matplotlib.use("Agg")
+    matplotlib.rcParams["svg.fonttype"] = "none"
     import matplotlib.pyplot as plt
 
     if preset not in PRESETS:
@@ -112,11 +113,18 @@ def main(argv=None) -> int:
     p.add_argument("--subtitle", default="")
     p.add_argument("--out", default="ga", help="output file stem (.png and .svg)")
     p.add_argument("--selftest", action="store_true")
+    p.add_argument("--list-presets", action="store_true")
     args = p.parse_args(argv)
+    if args.list_presets:
+        for k, (_, _, _, label) in PRESETS.items():
+            print(f"{k:20s}  {label}")
+        return 0
     if args.selftest:
         return run_selftest()
     fig, dpi = build_canvas(args.preset, args.title, args.subtitle)
     png, svg = export(fig, dpi, args.out)
+    import matplotlib.pyplot as plt
+    plt.close(fig)
     print(f"wrote {png} and {svg} ({PRESETS[args.preset][3]})")
     return 0
 

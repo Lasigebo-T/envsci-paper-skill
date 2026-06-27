@@ -26,6 +26,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import sys
 from pathlib import Path
 
 TEMPLATES = {
@@ -48,6 +49,8 @@ def build_deck(outline: dict):
     # Title slide
     s = prs.slides.add_slide(prs.slide_layouts[0])
     s.shapes.title.text = outline.get("title", "Untitled")
+    from pptx.dml.color import RGBColor
+    s.shapes.title.text_frame.paragraphs[0].font.color.rgb = RGBColor.from_string(TEMPLATES[template]["accent"])
     if len(s.placeholders) > 1:
         s.placeholders[1].text = outline.get("subtitle", "")
 
@@ -62,8 +65,11 @@ def build_deck(outline: dict):
             para = tf.paragraphs[0] if i == 0 else tf.add_paragraph()
             para.text = b
         img = sl.get("image")
-        if img and os.path.isfile(img):
-            slide.shapes.add_picture(img, Inches(5.2), Inches(1.8), height=Inches(3.5))
+        if img:
+            if os.path.isfile(img):
+                slide.shapes.add_picture(img, Inches(5.2), Inches(1.8), height=Inches(3.5))
+            else:
+                print(f"WARNING: image not found, skipping: {img}", file=sys.stderr)
         notes = sl.get("notes", "")
         if notes:
             slide.notes_slide.notes_text_frame.text = notes
