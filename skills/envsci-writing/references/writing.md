@@ -106,6 +106,19 @@ where a test backs it, and pair it with the test result.
 
 ---
 
+## 2b. Source anchors for high-risk claims
+
+A **high-risk claim** is (i) any value taken from a source (concentration, recovery, index value, guideline/threshold, a literature statistic), (ii) any direct quotation, or (iii) any specific, contestable conclusion attributed to a source. When drafting, every high-risk claim MUST carry a source anchor; other sentences may carry one optionally.
+
+Anchor syntax (CSL-locator style, authoring-time annotation):
+- page `[@key, p. 42]` / range `[@key, pp. 42–45]`
+- section `[@key, §3.2]`
+- quote `[@key, "verbatim ≤25 words"]` (quoted words also appear in the prose)
+
+These anchors are verified at the integrity gate by **envsci-citations** (`ANCHOR_VERIFIED/UNRESOLVED/MISMATCH/MISSING`). A high-risk claim with no anchor fails Gate I-2. Anchors are not necessarily printed: keep page numbers for direct quotations per journal style; for paraphrase the anchor stays in the audit trail.
+
+---
+
 ## 3. Title
 
 **Pattern:** `[contaminant / matrix / system] + [what was found or assessed] + [study area / scale]`.

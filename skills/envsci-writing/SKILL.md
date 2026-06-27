@@ -8,9 +8,9 @@ description: >-
   section, polish my English, de-translationese / fix Chinglish, Nature-style
   language edit, tighten/soften this paragraph, reduce overclaiming, structure my
   argument, turn my Chinese notes into English, draft revised manuscript text for
-  reviewer comments. Triggers (简体中文): 写引言/前言、写方法、写结果、写讨论、写结论、
+  reviewer comments, source anchor. Triggers (简体中文): 写引言/前言、写方法、写结果、写讨论、写结论、
   写摘要、起标题、写 highlights/图文摘要、润色、英文打磨、去翻译腔、改 Chinglish、
-  降低 overclaim、把中文思路写成英文、按审稿意见改稿正文。Section-aware (Title/Abstract/
+  降低 overclaim、把中文思路写成英文、按审稿意见改稿正文、来源锚点、给数字标页码。Section-aware (Title/Abstract/
   Intro/Study area/Sampling/Methods+QAQC/Results/Discussion/Conclusions),
   enforces the Knowledge-Isolation anti-leakage rule, terminology/units/dw-ww
   consistency, and a Chinese-author dual-output (polished English first, then a
@@ -69,6 +69,9 @@ dw/ww (or dissolved/total) basis are stated once and held everywhere.
 4. Emit the drafted/polished text plus any unresolved `[MATERIAL GAP]` /
    `[LLM-SUPPLEMENTED]` tags. Drafted citations and numbers are **not**
    self-verified here — they pass through the integrity gate in envsci-citations.
+
+## Writing discipline
+- High-risk claims (numbers / direct quotes / key conclusions) must carry a **source anchor** ([@key, p./§/"quote"]); verified later by envsci-citations.
 
 ## Language & integrity stance
 Respond in the user's language. The user works in Simplified Chinese: deliver
