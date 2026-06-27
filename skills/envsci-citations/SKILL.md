@@ -8,8 +8,10 @@ description: >-
   references", "verify these DOIs", "did the AI fabricate any citations", "find
   hallucinated / made-up references", "academic-integrity check", "every
   reference VERIFIED or NOT_FOUND", "run the integrity gate before/after
-  revision". Triggers (简体中文): 参考文献格式 / 引文格式转换 / 核对引用 / 查 DOI /
-  查有没有编造的文献 / 检查参考文献真实性 / 学术诚信核查 / 投稿前引文核查. Also fires
+  revision", "page/section anchor verification, temporal / anachronism check,
+  superseded-guideline check". Triggers (简体中文): 参考文献格式 / 引文格式转换 / 核对引用 / 查 DOI /
+  查有没有编造的文献 / 检查参考文献真实性 / 学术诚信核查 / 投稿前引文核查 /
+  页码/章节锚点核验、时间一致性、时代错置、过时标准版本核查. Also fires
   on requests to triangulate references against Crossref/OpenAlex/Semantic
   Scholar/PubMed, to detect DOI-misdirection, or to verify env-sci index formulas
   / guideline values cited in text. Not for DISCOVERING new literature or building
@@ -34,6 +36,12 @@ Two jobs for environmental-science manuscripts:
    **VERIFIED** or **NOT_FOUND** — no "difficult to verify," no "plausible but
    unconfirmed," no escape hatch. Every quantitative claim traces to a real source
    passage or the Data Ledger.
+   The integrity gate now also (a) verifies **source anchors** on high-risk claims
+   (page/section/quote → `ANCHOR_VERIFIED/UNRESOLVED/MISMATCH/MISSING`, see
+   references §B-anchor) and (b) runs a **temporal-integrity audit** (Phase C5:
+   forward references, superseded guideline editions, epoch/tense mismatch). Run
+   `check_references.py --manuscript-year YYYY` for the offline forward-reference
+   screen.
 
 This is the family's crown-jewel gate: hallucinated citations and fabricated
 **numbers** (a wrong index formula, toxic-response factor, or guideline value) are
