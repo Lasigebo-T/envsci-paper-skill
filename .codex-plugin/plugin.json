@@ -1,7 +1,7 @@
 {
   "name": "enviro-paper",
-  "version": "2.0.0",
-  "description": "Environmental-science paper-writing SKILL COLLECTION for Claude Code and Codex: 1 umbrella orchestrator (enviro-paper) + 8 independently selectable function skills (envsci-ideate, envsci-litsearch, envsci-data, envsci-figures, envsci-writing, envsci-citations, envsci-review, envsci-journals). Each can be invoked on its own; the umbrella runs the full data->manuscript->response pipeline. Composes with the separate scipilot-figure-skill for general figure methodology.",
+  "version": "2.1.0",
+  "description": "Environmental-science paper-writing SKILL COLLECTION for Claude Code and Codex: 1 umbrella orchestrator (enviro-paper) + 9 independently selectable function skills (envsci-ideate, envsci-litsearch, envsci-data, envsci-figures, envsci-writing, envsci-citations, envsci-review, envsci-journals, envsci-slides). Each can be invoked on its own; the umbrella runs the full data->manuscript->response pipeline. Composes with the separate scipilot-figure-skill for general figure methodology.",
   "author": {
     "name": "Lasigebo-T",
     "url": "https://github.com/Lasigebo-T"
@@ -23,7 +23,7 @@
   "interface": {
     "displayName": "Enviro Paper",
     "shortDescription": "Environmental-science sampling data to a submission-ready paper",
-    "longDescription": "Use Enviro Paper to take an environmental-science field-sampling dataset (water, soil, sediment, sludge, pore-water/peeper, air/aerosol, ecology) all the way to a submission-ready manuscript: validate data with QA/QC and non-detect handling, run environmental statistics, compute pollution and ecological/health-risk indices (Igeo, EF, CF/PLI, Hakanson Er/RI, Nemerow, WQI, EPA HQ/HI/CR), generate publication-quality figures, draft and polish IMRaD sections, verify citations against fabrication, simulate peer review, write reviewer-response letters, and format for a target environmental journal.",
+    "longDescription": "Use Enviro Paper to take an environmental-science field-sampling dataset (water, soil, sediment, sludge, pore-water/peeper, air/aerosol, ecology) all the way to a submission-ready manuscript: validate data with QA/QC and non-detect handling, run environmental statistics, compute pollution and ecological/health-risk indices (Igeo, EF, CF/PLI, Hakanson Er/RI, Nemerow, WQI, EPA HQ/HI/CR), generate publication-quality figures, draft and polish IMRaD sections, verify citations against fabrication, simulate peer review, write reviewer-response letters, and format for a target environmental journal. Also generate a journal-spec graphical abstract and a presentation deck.",
     "developerName": "Lasigebo-T",
     "category": "Research",
     "capabilities": [

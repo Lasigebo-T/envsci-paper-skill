@@ -1,7 +1,7 @@
 {
   "name": "envsci-paper-skill",
-  "version": "2.0.0",
-  "description": "Environmental-science paper-writing SKILL COLLECTION for Claude Code and Codex: 1 umbrella orchestrator (enviro-paper) + 8 independently selectable function skills (envsci-ideate, envsci-litsearch, envsci-data, envsci-figures, envsci-writing, envsci-citations, envsci-review, envsci-journals). Each can be invoked on its own; the umbrella runs the full data->manuscript->response pipeline. Composes with the separate scipilot-figure-skill for general figure methodology.",
+  "version": "2.1.0",
+  "description": "Environmental-science paper-writing SKILL COLLECTION for Claude Code and Codex: 1 umbrella orchestrator (enviro-paper) + 9 independently selectable function skills (envsci-ideate, envsci-litsearch, envsci-data, envsci-figures, envsci-writing, envsci-citations, envsci-review, envsci-journals, envsci-slides). Each can be invoked on its own; the umbrella runs the full data->manuscript->response pipeline. Composes with the separate scipilot-figure-skill for general figure methodology.",
   "owner": {
     "name": "Lasigebo-T",
     "url": "https://github.com/Lasigebo-T"
@@ -9,9 +9,9 @@
   "plugins": [
     {
       "name": "enviro-paper",
-      "version": "2.0.0",
+      "version": "2.1.0",
       "source": "./",
-      "description": "Environmental-science paper-writing SKILL COLLECTION for Claude Code and Codex: 1 umbrella orchestrator (enviro-paper) + 8 independently selectable function skills (envsci-ideate, envsci-litsearch, envsci-data, envsci-figures, envsci-writing, envsci-citations, envsci-review, envsci-journals). Each can be invoked on its own; the umbrella runs the full data->manuscript->response pipeline. Composes with the separate scipilot-figure-skill for general figure methodology.",
+      "description": "Environmental-science paper-writing SKILL COLLECTION for Claude Code and Codex: 1 umbrella orchestrator (enviro-paper) + 9 independently selectable function skills (envsci-ideate, envsci-litsearch, envsci-data, envsci-figures, envsci-writing, envsci-citations, envsci-review, envsci-journals, envsci-slides). Each can be invoked on its own; the umbrella runs the full data->manuscript->response pipeline. Composes with the separate scipilot-figure-skill for general figure methodology.",
       "author": {
         "name": "Lasigebo-T"
       },
@@ -23,7 +23,9 @@
         "risk-assessment",
         "figures",
         "citation",
-        "publication"
+        "publication",
+        "graphical-abstract",
+        "slides"
       ],
       "category": "academic"
     }
